@@ -74,7 +74,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'wroclawskiewalentynki.wsgi.application'
-#ASGI_APPLICATION = 'wroclawskiewalentynki.asgi.application'
+ASGI_APPLICATION = 'wroclawskiewalentynki.asgi.application'
+
+LOGIN_REDIRECT_URL = '/chat/'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
 
 
 # Database
