@@ -11,6 +11,9 @@ class School(models.Model):
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True ,on_delete=models.CASCADE)
+    instagram = models.URLField(max_length=200, blank=True)
+    facebook = models.URLField(max_length=200, blank=True)
+    tiktok = models.URLField(max_length=200, blank=True)
     question1 = models.IntegerField(choices=Q1, validators=[MinValueValidator(1), MaxValueValidator(4)])
     question2 = models.IntegerField(choices=Q2, validators=[MinValueValidator(1), MaxValueValidator(3)])
     question3 = models.IntegerField(choices=Q3, validators=[MinValueValidator(1), MaxValueValidator(4)])
