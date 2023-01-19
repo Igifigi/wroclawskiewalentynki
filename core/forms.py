@@ -11,6 +11,11 @@ class NewUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
+        error_messages = {
+            'email': {
+                'unique': _("There is already an accound with this email address.")
+            },
+        }
     
     def clean_password2(self):
         pass1 = self.cleaned_data.get("password1")
