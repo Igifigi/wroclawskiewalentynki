@@ -20,7 +20,7 @@ class UserProfile(models.Model):
     question7 = models.IntegerField(choices=Q7, validators=[MinValueValidator(1), MaxValueValidator(5)])
     question8 = models.IntegerField(choices=Q8, validators=[MinValueValidator(1), MaxValueValidator(13)])
     question9 = models.IntegerField(choices=Q9, validators=[MinValueValidator(1), MaxValueValidator(10)])
-    question10 = models.IntegerField(choices=Q10, validators=[MinValueValidator(1), MaxValueValidator(45)])
+    question10 = models.IntegerField(choices=Q10, validators=[MinValueValidator(1), MaxValueValidator(4)])
     question11 = models.IntegerField(choices=Q11, validators=[MinValueValidator(1), MaxValueValidator(5)])
     question12 = models.IntegerField(choices=Q12, validators=[MinValueValidator(1), MaxValueValidator(2)])
     question13 = models.IntegerField(choices=Q13, validators=[MinValueValidator(1), MaxValueValidator(8)])
