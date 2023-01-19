@@ -15,8 +15,8 @@ def create_profile(request):
             print('mess2') #DEBUG
             return redirect('index') # TODO: change
         messages.error(request, _("Unsuccessful")) # TODO: make error message
-        form = UserProfileForm()
-        context = {
-            "form": form
-        }
-        return render(request, template_name='create_user_profile.html', context=context)
+    form = UserProfileForm()
+    context = {
+        "form": form
+    }
+    return render(request, template_name='create_user_profile.html', context=context)
