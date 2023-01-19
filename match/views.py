@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm
 
 @login_required
-def create_profil(request):
+def create_profile(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
         if form.is_valid():
