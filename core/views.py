@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'base.html')
 
 def register_request(request):
-    if request.POST:
+    if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
@@ -28,7 +28,7 @@ def register_request(request):
     return render(request, template_name='register.html', context=context)
 
 def login_request(request):
-    if request.POST:
+    if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
