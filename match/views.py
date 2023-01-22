@@ -4,13 +4,19 @@ from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required
 
 from .forms import UserProfileForm
+from .models import UserProfile
 
 @login_required
 def create_profile(request):
+    if UserProfile.objects.get(user=request.user):
+        return redirect('edit_profile')
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
         if form.is_valid():
-            form.save()
+            object = form.save(commit=False)
+            object.user = request.user
+            # TODO: zrobić, żeby wyskakiwał błąd przy próbie ponownej rejestracji UP o tutaj xD
+            object.save()
             messages.success(request, _("Successfully created profile."))
             print('mess2') #DEBUG
             return redirect('index') # TODO: change

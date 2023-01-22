@@ -10,7 +10,7 @@ class School(models.Model):
     code = models.CharField(_("Code"), max_length=3) # TODO: set code to exactly 3 znaki
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, unique=True ,on_delete=models.CASCADE)
+    user = models.OneToOneField(User, unique=True ,on_delete=models.CASCADE)
     question1 = models.IntegerField(_('What class are you in?'), choices=Q1, validators=[MinValueValidator(1), MaxValueValidator(4)])
     question2 = models.IntegerField(_('You identify yourself as:'), choices=Q2, validators=[MinValueValidator(1), MaxValueValidator(3)])
     question3 = models.IntegerField(_('Who would you like to be matched with?'), choices=Q3, validators=[MinValueValidator(1), MaxValueValidator(4)])
