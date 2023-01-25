@@ -19,7 +19,8 @@ def create_profile(request):
             messages.success(request, _("Successfully created profile."))
             return redirect('index') # TODO: change
         messages.error(request, _("Unsuccessful")) # TODO: make error message
-    form = UserProfileForm()
+    else:
+        form = UserProfileForm()
     context = {
         "form": form
     }
