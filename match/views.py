@@ -8,7 +8,7 @@ from .models import UserProfile
 
 @login_required
 def create_profile(request):
-    if UserProfile.objects.get(user=request.user):
+    if UserProfile.objects.filter(user=request.user):
         return redirect('edit_profile')
     if request.method == 'POST':
         form = UserProfileForm(request.POST)
