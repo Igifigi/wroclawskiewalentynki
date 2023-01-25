@@ -8,4 +8,5 @@ urlpatterns = [
     path('logout/', logout_request, name='logout'),
     path('register/', register_request, name='register'),
     path('chat/', index, name='chat'),
+    path('terms_of_use', show_terms, name='terms'),
 ]

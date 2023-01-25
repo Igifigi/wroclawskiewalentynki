@@ -53,3 +53,6 @@ def logout_request(request):
     logout(request)
     messages.info(request, _("You have successfully logged out."))
     return redirect('index')
+
+def show_terms(request):
+    return render(request, 'terms.html')
