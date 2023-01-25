@@ -15,10 +15,8 @@ def create_profile(request):
         if form.is_valid():
             object = form.save(commit=False)
             object.user = request.user
-            # TODO: zrobić, żeby wyskakiwał błąd przy próbie ponownej rejestracji UP o tutaj xD
             object.save()
             messages.success(request, _("Successfully created profile."))
-            print('mess2') #DEBUG
             return redirect('index') # TODO: change
         messages.error(request, _("Unsuccessful")) # TODO: make error message
     form = UserProfileForm()
