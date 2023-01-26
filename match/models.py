@@ -1,16 +1,23 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
+from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 from .match_settings import *
 
 class School(models.Model):
     name = models.CharField(_("Name"), max_length=100)
-    code = models.CharField(_("Code"), max_length=3) # TODO: set code to exactly 3 znaki
+    code = models.CharField(_("Code"), max_length=3, validators=[MinLengthValidator(3)])
+
+def validate_school(code):
+    if not School.objects.filter(code=code):
+        raise ValidationError(_('%(code)s is not valid school code'), params={'code': code})
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True ,on_delete=models.CASCADE)
+    school = models.CharField(_('School code'), max_length=3, validators=[MinLengthValidator(3), validate_school])
+    matched = models.BooleanField(default=False)
     question1 = models.IntegerField(_('What class are you in?'), choices=Q1, validators=[MinValueValidator(1), MaxValueValidator(4)])
     question2 = models.IntegerField(_('You identify yourself as:'), choices=Q2, validators=[MinValueValidator(1), MaxValueValidator(3)])
     question3 = models.IntegerField(_('Who would you like to be matched with?'), choices=Q3, validators=[MinValueValidator(1), MaxValueValidator(4)])
@@ -25,5 +32,6 @@ class UserProfile(models.Model):
     question12 = models.IntegerField(_('Do you avoid serious topics?'), choices=Q12, validators=[MinValueValidator(1), MaxValueValidator(2)])
     question13 = models.IntegerField(_('My favorite subject at school is:'), choices=Q13, validators=[MinValueValidator(1), MaxValueValidator(8)])
     instagram = models.URLField(_('Instagram profile link (non-obligatory)'), max_length=200, blank=True)
-    facebook = models.URLField(_('Facebook profile link (non-obligatory)'), max_length=200, blank=True) # TODO: nazwać i przesunąć na koniec te pytania
+    facebook = models.URLField(_('Facebook profile link (non-obligatory)'), max_length=200, blank=True)
     tiktok = models.URLField(_('TikTok profile link (non-obligatory)'), max_length=200, blank=True)
+    accept_terms = models.BooleanField(_('I accept terms of use (available in the footer of the page).'))
