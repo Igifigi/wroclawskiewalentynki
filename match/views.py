@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils.translation import gettext as _
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 from .forms import UserProfileForm
 from .models import UserProfile
+from .logic import make_matches
 
 @login_required
 def create_profile(request):
@@ -50,4 +51,16 @@ def edit_profile(request):
         'submit_button_label': _('Submit'),
     }
     return render(request, template_name='flexible_form.html', context=context)
+
+@login_required
+@permission_required('match.start_matching', raise_exception=True)
+def start_matching1(request):
+    message = _('Are you sure to start the matching process? It may take a while (depends on how much data does it have). Remember to make a backup of the database!')
+    return render(request, 'start_matching1.html', context={'message': message})
+
+def start_matching2(request):
+    messages.info(request, _('Matching process has started. Please wait a while.'))
+    make_matches()
+    return render(request, 'start_matching1.html')
+    
     
