@@ -6,6 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.utils.encoding import force_str
 
 from .forms import NewUserForm
 from .utils import send_confirmation_mail
@@ -19,6 +20,7 @@ def register_request(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
+            user.save()
             send_confirmation_mail(user)
             messages.success(request, _(f"Please go to your email {user.email} to verify your account. Remember to check your SPAM folder."))
             return redirect('index')
@@ -57,15 +59,16 @@ def logout_request(request):
 def show_terms(request):
     return render(request, 'terms.html')
 
-def validate_email(request, uid, token):
+def validate_email(request, uidb64, token):
+    print(uidb64, token)    
     try:
-        uid = str(urlsafe_base64_decode(uid))
+        uid = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
     except:
         user = None
         
-    if user is not None and default_token_generator.check_token(user, token) and not user.is_active():
-        user.is_active()
+    if user is not None and default_token_generator.check_token(user, token) and not user.is_active:
+        user.is_active = True
         user.save()
         messages.success(request, _('Successfully activated email. You can now login to your account.'))
         return redirect('login')
