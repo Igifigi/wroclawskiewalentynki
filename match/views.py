@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils.translation import gettext as _
@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from .forms import UserProfileForm
 from .models import UserProfile
 from .logic import make_matches
+from .utils import export_user_related_database_as_xlsx
 
 @login_required
 def create_profile(request):
@@ -94,4 +95,12 @@ def match_result(request):
         'without_profile_count': len(without_profile)
     }
     return render(request, 'match_result.html', context=context)
+
+@login_required
+@permission_required('match.download_database', raise_exception=True)
+def export_database(request):
+    output = export_user_related_database_as_xlsx()
+    response = HttpResponse(output.read(), content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = "attachment; filename=user-related_db_WW.xlsx"
+    return response
     
