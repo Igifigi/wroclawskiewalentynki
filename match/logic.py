@@ -1,4 +1,10 @@
-﻿from django.db.models import Q
+﻿"""
+This algorithm and the entire content of this file is the private property of Ignacy Świderski.
+It cannot be used, copied, modified or distributed without the consent of the author.
+(C) 2023
+"""
+
+from django.db.models import Q
 
 from .models import UserProfile, Match
 from .match_settings import *
