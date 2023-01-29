@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+
+"""
+To run app:
+1) Create localsettings.py file in the same directory as this one
+2) Set 'DEBUG', 'SECRET_KEY', 'EMAIL_BACKEND', 'EMAIL_HOST', 'EMAIL_FROM'
+'EMAIL_HOST_USER', 'EMAIL_HOST_PASSWORD' AND 'EMAIL_PORT'.
+"""
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 SITE_ROOT = os.path.dirname(os.path.realpath(__name__))
@@ -22,6 +31,16 @@ SECRET_KEY = 'this-key-is-unsecure'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
+
+# Emailing settings (set in localsettings.py)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST =
+# EMAIL_FROM =
+# EMAIL_HOST_USER =
+# EMAIL_HOST_PASSWORD =
+# EMAIL_PORT =
+EMAIL_USE_TLS = True
+
 
 ALLOWED_HOSTS = []
 
