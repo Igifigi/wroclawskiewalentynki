@@ -17,7 +17,7 @@ from pathlib import Path
 To run app:
 1) Create localsettings.py file in the same directory as this one
 2) Set 'DEBUG', 'SECRET_KEY', 'EMAIL_BACKEND', 'EMAIL_HOST', 'EMAIL_FROM'
-'EMAIL_HOST_USER', 'EMAIL_HOST_PASSWORD' AND 'EMAIL_PORT'.
+'EMAIL_HOST_USER', 'EMAIL_HOST_PASSWORD', 'EMAIL_PORT' AND 'NOREPLY_EMAIL'.
 """
 
 
@@ -39,8 +39,10 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST_USER =
 # EMAIL_HOST_PASSWORD =
 # EMAIL_PORT =
+# NOREPLY_EMAIL =
 EMAIL_USE_TLS = True
 
+PASSWORD_RESET_TIMEOUT = 14400
 
 ALLOWED_HOSTS = []
 
