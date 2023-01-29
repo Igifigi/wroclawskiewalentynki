@@ -15,7 +15,7 @@ def validate_school(code):
         raise ValidationError(_('%(code)s is not valid school code'), params={'code': code})
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, unique=True ,on_delete=models.CASCADE)
+    user = models.OneToOneField(User, unique=True, related_name='profile', on_delete=models.CASCADE)
     school = models.CharField(_('School code'), max_length=3, validators=[MinLengthValidator(3), validate_school])
     matched = models.BooleanField(default=False)
     question1 = models.IntegerField(_('What class are you in?'), choices=Q1.choices, validators=[MinValueValidator(1), MaxValueValidator(4)])
