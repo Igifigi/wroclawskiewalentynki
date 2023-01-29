@@ -40,7 +40,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST_PASSWORD =
 # EMAIL_PORT =
 # NOREPLY_EMAIL =
-EMAIL_USE_TLS = True
+EMAIL_USE_SSL = True
 
 PASSWORD_RESET_TIMEOUT = 14400
 
