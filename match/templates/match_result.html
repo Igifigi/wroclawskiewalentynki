@@ -1,0 +1,30 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Match result" %}{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+	<h1>{% trans "Match result" %}</h1>
+    <h3>{% trans "Matched users" %} ({{ with_match_count }})</h3>
+    <div>
+        {% for profile in with_match %}
+        <li>[{{ profile.user.id }}] {{ profile.user }}: {{ profile.user.first_name}} {{ profile.user.last_name }}</li>
+        {% endfor %}
+    </div>
+    <h3>{% trans "Non-matched users" %} ({{ without_match_count }})</h3>
+    <div>
+        {% for profile in without_match %}
+        <li>[{{ profile.user.id }}] {{ profile.user }}: {{ profile.user.first_name}} {{ profile.user.last_name }}</li>
+        {% endfor %}
+    </div>
+    <h3>{% trans "Users without profile" %} ({{ without_profile_count }})</h3>
+    <div>
+        {% for user in without_profile %}
+        <li>[{{ user.id }}] {{ user }}: {{ user.first_name}} {{ user.last_name }}</li>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

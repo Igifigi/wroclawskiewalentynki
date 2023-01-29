@@ -1,0 +1,26 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content %}
+
+<div class="container py-5">
+	<h2>{{ message }}</h2>
+	<button type="button" id="proceed_button" onclick="display_message()">
+        {{ button_label }}
+    </button>
+</div>
+
+{% endblock content %}
+
+{% block script %}
+<script>
+    function display_message(){
+        if("{{ alert_message }}" != "None"){
+            alert("{{ alert_message }}");
+        }
+        window.location.replace("{{ redirect_url }}");
+    }
+</script>
+{% endblock script %}

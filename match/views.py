@@ -1,7 +1,9 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import User
 
 from .forms import UserProfileForm
 from .models import UserProfile
@@ -9,6 +11,9 @@ from .logic import make_matches
 
 @login_required
 def create_profile(request):
+    if not request.user.is_active:
+        messages.error(_('You need to activate your account.'))
+        return redirect('index')
     if UserProfile.objects.filter(user=request.user):
         return redirect('edit_profile')
     if request.method == 'POST':
@@ -31,6 +36,7 @@ def create_profile(request):
     }
     return render(request, template_name='flexible_form.html', context=context)
 
+# TODO!!!!
 @login_required
 def edit_profile(request):
     if not UserProfile.objects.filter(user=request.user):
@@ -53,14 +59,39 @@ def edit_profile(request):
     return render(request, template_name='flexible_form.html', context=context)
 
 @login_required
-@permission_required('match.start_matching', raise_exception=True)
-def start_matching1(request):
-    message = _('Are you sure to start the matching process? It may take a while (depends on how much data does it have). Remember to make a backup of the database!')
-    return render(request, 'start_matching1.html', context={'message': message})
-
-def start_matching2(request):
-    messages.info(request, _('Matching process has started. Please wait a while.'))
-    make_matches()
-    return render(request, 'start_matching1.html')
+@permission_required('match.match', raise_exception=True)
+def start_matching(request):
+    context = {
+        'title': _('Start matching'),
+        'message': _('Are you sure to start the matching process? It may take a while (depends on how much data does it have). Remember to make a backup of the database!'),
+        'button_label': _('Proceed'),
+        'alert_message': _('Please remember to make a backup of the database! (before clicking OK button)'),
+        'redirect_url': 'matching',
+    }
+    return render(request, 'flexible_site.html', context=context)
     
+def matching(request):
+    context = {
+        'title': _('Matching, please wait'),
+        'message': _('Matching process has started. Please wait a while.'),
+        'button_label': _('Go to result'),
+        'alert_message': 'None',
+        'redirect_url': 'match_result',
+    }
+    make_matches()
+    return render(request, 'flexible_site.html', context=context)
+    
+def match_result(request):
+    with_match = UserProfile.objects.filter(matched=True)
+    without_match = UserProfile.objects.filter(matched=False)
+    without_profile = User.objects.filter(profile=None)
+    context = {
+        'with_match': with_match,
+        'with_match_count': len(with_match),
+        'without_match': without_match,
+        'without_match_count': len(without_match),
+        'without_profile': without_profile,
+        'without_profile_count': len(without_profile)
+    }
+    return render(request, 'match_result.html', context=context)
     
