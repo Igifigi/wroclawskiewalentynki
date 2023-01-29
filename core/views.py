@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect
 from django.utils.translation import gettext as _
+from django.utils.http import urlsafe_base64_decode
 from django.contrib import messages
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.forms import AuthenticationForm
-
-
+from django.contrib.auth.models import User
 
 from .forms import NewUserForm
+from .utils import send_confirmation_mail
 
 def index(request):
     return render(request, 'base.html')
@@ -15,10 +17,10 @@ def register_request(request):
     if request.method == 'POST':
         form = NewUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)
-            messages.success(request, _("Registration successfull."))
-            print('mess1') # DEBUG
+            user = form.save(commit=False)
+            user.is_active = False
+            send_confirmation_mail(user)
+            messages.success(request, _(f"Please go to your email {user.email} to verify your account. Remember to check your SPAM folder."))
             return redirect('index') # TODO: change
         messages.error(request, _("Unsuccessful registration. Invalid information."))
     form = NewUserForm()
@@ -56,3 +58,20 @@ def logout_request(request):
 
 def show_terms(request):
     return render(request, 'terms.html')
+
+def validate_email(request, uid, token):
+    try:
+        uid = str(urlsafe_base64_decode(uid))
+        user = User.objects.get(pk=uid)
+    except:
+        user = None
+        
+    if user is not None and default_token_generator.check_token(user, token) and not user.is_active():
+        user.is_active()
+        user.save()
+        messages.success(request, _('Successfully activated email. You can now login to your account.'))
+        return redirect('login')
+    else:
+        messages.error(request, _('Activation link is invalid!'))
+        
+    return redirect('index')
