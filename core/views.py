@@ -21,8 +21,9 @@ def register_request(request):
             user.is_active = False
             send_confirmation_mail(user)
             messages.success(request, _(f"Please go to your email {user.email} to verify your account. Remember to check your SPAM folder."))
-            return redirect('index') # TODO: change
-        messages.error(request, _("Unsuccessful registration. Invalid information."))
+            return redirect('index')
+        for error in form.errors.values():
+            messages.error(request, error)
     form = NewUserForm()
     context = {
         "register_form": form
@@ -40,11 +41,8 @@ def login_request(request):
                 login(request, user)
                 messages.info(request, _(f"You are now logged in as {username}."))
                 return redirect('index') #TODO: change
-            else:
-                messages.error(request, _("Invalid username or password."))
-        else:
-            messages.error(request, _("Invalid username or password."))
-            # TODO: czy tych ifów nie można uprościć?
+        for error in form.errors.values():
+            messages.error(request, error)
     form = AuthenticationForm()
     context = {
         "login_form": form
