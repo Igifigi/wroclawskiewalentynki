@@ -5,7 +5,7 @@ from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 
-from .forms import UserProfileForm
+from .forms import UserProfileCreateForm
 from .models import UserProfile
 from .logic import make_matches
 from .utils import export_user_related_database_as_xlsx
@@ -18,7 +18,7 @@ def create_profile(request):
     if UserProfile.objects.filter(user=request.user):
         return redirect('edit_profile')
     if request.method == 'POST':
-        form = UserProfileForm(request.POST)
+        form = UserProfileCreateForm(request.POST)
         if form.is_valid():
             object = form.save(commit=False)
             object.user = request.user
@@ -28,7 +28,7 @@ def create_profile(request):
             return redirect('index') # TODO: change
         messages.error(request, _("Unsuccessful")) # TODO: make error message
     else:
-        form = UserProfileForm()
+        form = UserProfileCreateForm()
     context = {
         'form': form,
         'form_name': _('Create your profile'),
@@ -43,14 +43,14 @@ def edit_profile(request):
     if not UserProfile.objects.filter(user=request.user):
         return redirect('create_profile')
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=UserProfile.objects.get(user=request.user))
+        form = UserProfileCreateForm(request.POST, instance=UserProfile.objects.get(user=request.user))
         if form.is_valid():
             form.save()
             messages.success(request, _('Successfully updated profile.'))
             return redirect('index') # TODO: change
         messages.error(request, _('Unsuccessful')) # TODO: make error message
     else:
-        form = UserProfileForm(instance=UserProfile.objects.get(user=request.user))
+        form = UserProfileCreateForm(instance=UserProfile.objects.get(user=request.user))
     context = {
         'form': form,
         'form_name': _('Edit your profile'),
