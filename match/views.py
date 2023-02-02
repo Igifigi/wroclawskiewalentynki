@@ -5,7 +5,7 @@ from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.models import User
 
-from .forms import UserProfileCreateForm
+from .forms import UserProfileCreateForm, UserProfileEditForm
 from .models import UserProfile
 from .logic import make_matches
 from .utils import export_user_related_database_as_xlsx
@@ -37,20 +37,19 @@ def create_profile(request):
     }
     return render(request, template_name='flexible_form.html', context=context)
 
-# TODO!!!!
 @login_required
 def edit_profile(request):
     if not UserProfile.objects.filter(user=request.user):
         return redirect('create_profile')
     if request.method == 'POST':
-        form = UserProfileCreateForm(request.POST, instance=UserProfile.objects.get(user=request.user))
+        form = UserProfileEditForm(request.POST, instance=UserProfile.objects.get(user=request.user))
         if form.is_valid():
             form.save()
             messages.success(request, _('Successfully updated profile.'))
             return redirect('index') # TODO: change
         messages.error(request, _('Unsuccessful')) # TODO: make error message
     else:
-        form = UserProfileCreateForm(instance=UserProfile.objects.get(user=request.user))
+        form = UserProfileEditForm(instance=UserProfile.objects.get(user=request.user))
     context = {
         'form': form,
         'form_name': _('Edit your profile'),
