@@ -143,6 +143,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 
@@ -154,7 +156,7 @@ STATICFILES_DIRS = [
     BASE_DIR /'static'
 ]
 
-LOCALE_PAHTS = [
+LOCALE_PATHS = [
     BASE_DIR / 'locale'
 ]
 
