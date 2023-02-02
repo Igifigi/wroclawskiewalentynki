@@ -14,7 +14,7 @@ from .utils import export_user_related_database_as_xlsx
 def create_profile(request):
     if not request.user.is_active:
         messages.error(_('You need to activate your account.'))
-        return redirect('index')
+        return redirect('index') #TODO: change
     if UserProfile.objects.filter(user=request.user):
         return redirect('edit_profile')
     if request.method == 'POST':
@@ -50,7 +50,7 @@ def edit_profile(request):
             return redirect('index') # TODO: change
         messages.error(request, _('Unsuccessful')) # TODO: make error message
     else:
-        form = UserProfile(instance=UserProfile.objects.get(user=request.user))
+        form = UserProfileForm(instance=UserProfile.objects.get(user=request.user))
     context = {
         'form': form,
         'form_name': _('Edit your profile'),
