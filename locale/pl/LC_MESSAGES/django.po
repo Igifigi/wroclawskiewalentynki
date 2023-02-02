@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-15 22:05+0100\n"
+"POT-Creation-Date: 2023-02-02 21:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,30 +20,110 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: .\core\forms.py:19
+#: .\chat\templates\chat.html:5 .\core\templates\base.html:25
+msgid "Chat"
+msgstr "Czat"
+
+#: .\core\forms.py:16
+msgid "There is already an accound with this email address."
+msgstr "Istnieje już konto przypisane do tego adresu email."
+
+#: .\core\forms.py:24
 msgid "Passwords do not match."
-msgstr "Hasła się nie zgadzają."
+msgstr "Hasła nie są takie same."
+
+#: .\core\plain_mails.py:6
+msgid "Verify e-mail address"
+msgstr "Potwierdź swój adres email"
+
+#: .\core\plain_mails.py:8
+msgid ""
+"Hello! You have received this message because an instruction to create an "
+"account on the wroclawskiewalentynki.pl website has been issued. Please copy "
+"and paste the following URL into your web browser to verify your e-mail "
+"address: "
+msgstr ""
+"Cześć! Otrzymałeś/aś tę wiadomość, ponieważ wydano dyspozycję założenia "
+"konta w serwisie wroclawskiewalentynki.pl. Prosimy o skopiowanie i wklejenie "
+"poniższego adresu URL do przeglądarki internetowej. "
 
 #: .\core\templates\404.html:11
 msgid "Page not found"
-msgstr "Strona nie znaleziona"
+msgstr "Strona nie została znaleziona"
 
-#: .\core\templates\base.html:25
-msgid "Chat"
-msgstr "Czat"
+#: .\core\templates\500.html:11
+msgid "There was a server error"
+msgstr "Wystąpił błąd serwera"
 
 #: .\core\templates\base.html:28
 msgid "Log out"
 msgstr "Wyloguj się"
 
 #: .\core\templates\base.html:32 .\core\templates\login.html:4
-#: .\core\templates\login.html:14 .\core\templates\register.html:4
+#: .\core\templates\login.html:10 .\core\templates\login.html:14
+#: .\core\templates\register.html:4
 msgid "Log in"
 msgstr "Zaloguj się"
 
 #: .\core\templates\base.html:35
 msgid "Sign up"
 msgstr "Zarejestruj się"
+
+#: .\core\templates\emails\validate.html:5
+msgid "Confirm e-mail address"
+msgstr "Potwierdź swój adres e-mail"
+
+#: .\core\templates\emails\validate.html:9
+msgid "Hello!"
+msgstr "Cześć!"
+
+#: .\core\templates\emails\validate.html:10
+msgid ""
+"You have received this message because an instruction to create an account "
+"on the wroclawskiewalentynki.pl website has been issued."
+msgstr ""
+"Otrzymałeś/aś tę wiadomość, ponieważ wydano dyspozycję założenia konta w "
+"serwisie wroclawskiewalentynki.pl."
+
+#: .\core\templates\emails\validate.html:12
+msgid "Confirm your e-mail"
+msgstr "Potwierdź adres e-mail"
+
+#: .\core\templates\emails\validate.html:14
+msgid ""
+"If the button above does not work, please copy and paste the following URL "
+"into your web browser:"
+msgstr ""
+"Jeżeli powyższy przycisk nie działa, prosimy o skopiowanie i wklejenie "
+"poniższego adresu URL do przeglądarki internetowej:"
+
+#: .\core\templates\emails\validate.html:20
+msgid ""
+"\n"
+"If you did not issue the instruction, write an e-mail to <a href=\"mailto:"
+"kontakt@wroclawskiewalentynki.pl\">kontakt@wroclawskiewalentynki.pl</a>."
+"<br>\n"
+"Thank you for being part of our community.\n"
+msgstr ""
+"\n"
+"Jeżeli to nie Ty wydałeś dyspozycję napisz mejla na adres <a href=\"mailto:"
+"kontakt@wroclawskiewalentynki.pl\">kontakt@wroclawskiewalentynki.pl</a>."
+"<br>\n"
+"Dziękujemy, że należysz do naszej społeczności.\n"
+
+#: .\core\templates\emails\validate.html:25
+msgid ""
+"\n"
+"Regards,<br>\n"
+"Team of Wroclaw Valentine's Day 2023\n"
+msgstr ""
+"\n"
+"Pozdrawiamy,<br>\n"
+"Zespół Wrocławskich Walentynek 2023\n"
+
+#: .\core\templates\emails\validate.html:32
+msgid "Message generated automatically. Please do not reply to it."
+msgstr "Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać."
 
 #: .\core\templates\index.html:4
 msgid "Main page"
@@ -59,7 +139,7 @@ msgid ""
 msgstr ""
 "\n"
 "\t<p class=\"text-center\">Nie masz konta? <a href=\"%(register_url)s"
-"\">Zarejestuj się</a>.</p>\n"
+"\">Zarejestruj się</a>.</p>\n"
 "\t"
 
 #: .\core\templates\register.html:10 .\core\templates\register.html:15
@@ -75,27 +155,354 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"        Jeśli masz już konto, <a href=\"%(login_url)s\">zaloguj się "
+"        Jeśli masz już kontro, <a href=\"%(login_url)s\">zaloguj się "
 ".</a>\n"
 "        "
 
-#: .\core\views.py:18
-msgid "Registration successfull."
-msgstr "Rejestracja przebiegła pomyślnie"
+#: .\core\templates\terms.html:4 .\core\templates\terms.html:10
+msgid "Terms of use"
+msgstr "Regulamin"
 
-#: .\core\views.py:21
-msgid "Unsuccessful registration. Invalid information."
-msgstr "Rejestracja nieudana. Sprawdź dane."
+#: .\core\views.py:25
+#, python-brace-format
+msgid ""
+"Please go to your email {user.email} to verify your account. Remember to "
+"check your SPAM folder."
+msgstr ""
+"Odwiedź swój adres {user.email}, by zweryfikować swoje konto. Pamiętaj, aby "
+"sprawdzić folder SPAM."
 
-#: .\core\views.py:37
+#: .\core\views.py:44
 #, python-brace-format
 msgid "You are now logged in as {username}."
-msgstr "Jesteś teraz zalogowany/a jako {username}."
+msgstr "Jesteś teraz zalogowany/a jako {username}"
 
-#: .\core\views.py:40 .\core\views.py:42
-msgid "Invalid username or password."
-msgstr "Niewłaściwa nazwa użykownika lub hasło."
-
-#: .\core\views.py:52
+#: .\core\views.py:56
 msgid "You have successfully logged out."
-msgstr "Wylogowano poprawnie."
+msgstr "Wylogowano pomyślnie."
+
+#: .\core\views.py:73
+msgid "Successfully activated email. You can now login to your account."
+msgstr "Aktywacja konta przebiegła pomyślnie. Teraz możesz się zalogować."
+
+#: .\core\views.py:76
+msgid "Activation link is invalid!"
+msgstr "Link aktywacyjny jest błędny."
+
+#: .\match\match_settings.py:6
+msgid "First"
+msgstr "Pierwsza"
+
+#: .\match\match_settings.py:7
+msgid "Second"
+msgstr "Druga"
+
+#: .\match\match_settings.py:8
+msgid "Third"
+msgstr "Trzecia"
+
+#: .\match\match_settings.py:9
+msgid "Fourth"
+msgstr "Czwarta"
+
+#: .\match\match_settings.py:13 .\match\match_settings.py:20
+msgid "Boy"
+msgstr "Chłopak"
+
+#: .\match\match_settings.py:14 .\match\match_settings.py:21
+msgid "Girl"
+msgstr "Dziewczyna"
+
+#: .\match\match_settings.py:15 .\match\match_settings.py:22
+msgid "Non-binary person"
+msgstr "Osoba niebinarna"
+
+#: .\match\match_settings.py:23
+msgid "I don't care"
+msgstr "Nie ma to dla mnie znaczenia"
+
+#: .\match\match_settings.py:27
+msgid "For a date 😎"
+msgstr "Na randeczkę 😎"
+
+#: .\match\match_settings.py:28
+msgid "To meet someone interesting"
+msgstr "Żeby poznać kogoś ciekawego"
+
+#: .\match\match_settings.py:32
+msgid "Cinema"
+msgstr "Kino"
+
+#: .\match\match_settings.py:33
+msgid "Museum"
+msgstr "Muzeum"
+
+#: .\match\match_settings.py:34
+msgid "Coffee"
+msgstr "Kawa"
+
+#: .\match\match_settings.py:35
+msgid "Drink (or three)"
+msgstr "Drink (albo trzy)"
+
+#: .\match\match_settings.py:36
+msgid "Billards"
+msgstr "Bilard"
+
+#: .\match\match_settings.py:40
+msgid "I'm going to a meeting"
+msgstr "Idę na spotkanie"
+
+#: .\match\match_settings.py:41
+msgid "I go home and study for the test"
+msgstr "Idę do domu i uczę się na sprawdzian"
+
+#: .\match\match_settings.py:45
+msgid "I play Fifa/LOL/CS or whatever"
+msgstr "Gram w Fife/Ligę/CSa lub cokolwiek innego"
+
+#: .\match\match_settings.py:46
+msgid "I meet with friends"
+msgstr "Spotykam się ze znajomymi"
+
+#: .\match\match_settings.py:47
+msgid "I read"
+msgstr "Czytam"
+
+#: .\match\match_settings.py:48
+msgid "Sports/gym 😎💪🏋"
+msgstr "Sport/siłownia mordeczko 😎💪🏋"
+
+#: .\match\match_settings.py:49
+msgid "I watch - movies, series"
+msgstr "Oglądam - filmy, seriale"
+
+#: .\match\match_settings.py:82
+msgid "Dogs, cats are too independent"
+msgstr "Psy, koty są zbyt niezależne"
+
+#: .\match\match_settings.py:83
+msgid "Cats, dogs stink"
+msgstr "Koty, psy śmierdzą"
+
+#: .\match\match_settings.py:84
+msgid "I don't like animals"
+msgstr "Nie lubię zwierząt"
+
+#: .\match\match_settings.py:85
+msgid "Doesn't matter, I love all animals"
+msgstr "Bez znaczenia, kocham wszytskie zwierzątka"
+
+#: .\match\match_settings.py:89
+msgid "I plan everything, ordnung muss sein"
+msgstr "Planuję wszytsko, ordnung muss sein"
+
+#: .\match\match_settings.py:93
+msgid "Full of spontaneity"
+msgstr "Pełen spontan"
+
+#: .\match\match_settings.py:97
+msgid "Yes, I'd rather not bother with them"
+msgstr "Tak, wolę nie zaprzątać sobie nimi głowy"
+
+#: .\match\match_settings.py:98
+msgid "No, nothing that human is to me strange"
+msgstr "Nie, nic co ludzkie nie jest mi obce"
+
+#: .\match\match_settings.py:102
+msgid "Mathematics/Physics"
+msgstr "Matematyka/fizyka"
+
+#: .\match\match_settings.py:103
+msgid "Polish"
+msgstr "Polski"
+
+#: .\match\match_settings.py:104
+msgid "Geography"
+msgstr "Geografia"
+
+#: .\match\match_settings.py:105
+msgid "IT"
+msgstr "Informatyka"
+
+#: .\match\match_settings.py:106
+msgid "History/Society knowledge"
+msgstr "Historia lub WOS"
+
+#: .\match\match_settings.py:107
+msgid "Foreign Languages"
+msgstr "Języki obce"
+
+#: .\match\match_settings.py:108
+msgid "Biology/Chemistry"
+msgstr "Biologia/chemia"
+
+#: .\match\match_settings.py:109
+msgid "PE"
+msgstr "WF"
+
+#: .\match\models.py:10
+msgid "Name"
+msgstr "Imię"
+
+#: .\match\models.py:11
+msgid "Code"
+msgstr "Kod"
+
+#: .\match\models.py:15
+#, python-format
+msgid "%(code)s is not valid school code"
+msgstr "%(code)s nie jest poprawnym kodem szkoły"
+
+#: .\match\models.py:19
+msgid "School code"
+msgstr "Kod szkoły"
+
+#: .\match\models.py:21
+msgid "What class are you in?"
+msgstr "W której klasie jesteś?"
+
+#: .\match\models.py:22
+msgid "You identify yourself as:"
+msgstr "Identyfikujesz się jako:"
+
+#: .\match\models.py:23
+msgid "Who would you like to be matched with?"
+msgstr "Do kogo chciałbyś/chciałabyś być dopasowan*?"
+
+#: .\match\models.py:24
+msgid "I want to meet:"
+msgstr "Chcę się spotkać:"
+
+#: .\match\models.py:25
+msgid "The ideal date/meeting is:"
+msgstr "Idealna randka/spotkanie to:"
+
+#: .\match\models.py:26
+msgid ""
+"You have a geo test tomorrow, but you were supposed to meet your friends "
+"today. What do you do?"
+msgstr "Masz jutro sprawdzian z geografii, ale miał*ś się dziś spotkać ze znajomymi. Co robisz?"
+
+#: .\match\models.py:27
+msgid "In free time:"
+msgstr "W wolnym czasie:"
+
+#: .\match\models.py:28
+msgid "If you had to listen to one musician for the next year, it would be:"
+msgstr "Jeśli miałbyś/miałabyś słuchać jednego muzyka przez najbliższy rok, byłby to:"
+
+#: .\match\models.py:29
+msgid "On a scale of 1 to 10, how decisive are you?"
+msgstr "W skali od 1 do 10, jak bardzo decyzyjn* jesteś?"
+
+#: .\match\models.py:30
+msgid "Dogs or perhaps cats?"
+msgstr "Psy, czy może jednak koty?"
+
+#: .\match\models.py:31
+msgid "How spontaneous are you?"
+msgstr "Jak bardzo sponataniczn* jesteś?"
+
+#: .\match\models.py:32
+msgid "Do you avoid serious topics?"
+msgstr "Unikasz poważnych tematów?"
+
+#: .\match\models.py:33
+msgid "My favorite subject at school is:"
+msgstr "Mój ulubiony przedmiot w szkole to:"
+
+#: .\match\models.py:34
+msgid "Instagram profile link (non-obligatory)"
+msgstr "Link do profilu na Instagramie (nieobowiązkowe)"
+
+#: .\match\models.py:35
+msgid "Facebook profile link (non-obligatory)"
+msgstr "Link do profilu na Facebooku (nieobowiązkowe)"
+
+#: .\match\models.py:36
+msgid "TikTok profile link (non-obligatory)"
+msgstr "Link do profilu na TikToku (nieobowiązkowe)"
+
+#: .\match\models.py:37
+msgid "I accept terms of use (available in the footer of the page)."
+msgstr "Akceptuję Regulamin (dostępny w stopce strony)."
+
+#: .\match\templates\match_result.html:4 .\match\templates\match_result.html:9
+msgid "Match result"
+msgstr "Wyniki procedury dopasowywania użytkowników"
+
+#: .\match\templates\match_result.html:10
+msgid "Matched users"
+msgstr "Użytkownicy dopasowani"
+
+#: .\match\templates\match_result.html:16
+msgid "Non-matched users"
+msgstr "Użytkownicy niedopasowani"
+
+#: .\match\templates\match_result.html:22
+msgid "Users without profile"
+msgstr "Użytkownicy bez profilu"
+
+#: .\match\templates\start_matching.html:4 .\match\views.py:65
+msgid "Start matching"
+msgstr "Rozpocznij łączenie"
+
+#: .\match\templates\start_matching.html:11 .\match\views.py:67
+msgid "Proceed"
+msgstr "Proceduj"
+
+#: .\match\templates\start_matching.html:20 .\match\views.py:68
+msgid ""
+"Please remember to make a backup of the database! (before clicking OK button)"
+msgstr ""
+"Pamiętaj, by zrobić kopię zapasową bazy danych! (przed klinięciem przycisku OK)"
+
+#: .\match\views.py:16
+msgid "You need to activate your account."
+msgstr "Musisz aktywować swoje konto."
+
+#: .\match\views.py:27
+msgid "Successfully created profile."
+msgstr "Pomyślnie utworzono profil."
+
+#: .\match\views.py:29 .\match\views.py:50
+msgid "Unsuccessful"
+msgstr "Niepomyślnie"
+
+#: .\match\views.py:34 .\match\views.py:35
+msgid "Create your profile"
+msgstr "Stwórz swój profil"
+
+#: .\match\views.py:36 .\match\views.py:57
+msgid "Submit"
+msgstr "Zatwierdź"
+
+#: .\match\views.py:48
+msgid "Successfully updated profile."
+msgstr "Profil został pomyślnie zaktualizowany."
+
+#: .\match\views.py:55 .\match\views.py:56
+msgid "Edit your profile"
+msgstr "Edytuj swój profil"
+
+#: .\match\views.py:66
+msgid ""
+"Are you sure to start the matching process? It may take a while (depends on "
+"how much data does it have). Remember to make a backup of the database!"
+msgstr ""
+"Jesteś pewny, że chcesz rozpocząć proces dopasowywania użytkowników? "
+"Może on chwilę zając (zależy od ilości użytkowników). "
+"Pamiętaj, by zrobić kopię zapasową bazy danych przed procedowaniem dalej!"
+
+#: .\match\views.py:75
+msgid "Matching, please wait"
+msgstr "Dopasowywanie, proszę czekać"
+
+#: .\match\views.py:76
+msgid "Matching process has started. Please wait a while."
+msgstr "Proces dopasowywania się rozpoczął. Proszę chwilę poczekać."
+
+#: .\match\views.py:77
+msgid "Go to result"
+msgstr "Idź do wyników"

@@ -7,7 +7,7 @@
 {% load crispy_forms_tags %}
 
 <div class="container py-5">
-	<h1>{% trans "Login" %}</h1>
+	<h1>{% trans "Log in" %}</h1>
 	<form method="post">
 		{% csrf_token %}
 		{{ login_form|crispy }}
