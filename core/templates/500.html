@@ -1,13 +1,12 @@
-﻿{% extends 'base.html' %}
+﻿{% extends 'base_error.html' %}
 {% load i18n %}
 
 {% block title %}500{% endblock title%}
 
-{% block content %}
-<div class="p-10 lg:p-20 text-center">
-    <h1 class="text-3xl lg:text-6xl text-white">
-        HTTP 500
-    </h1>
-    <p>{% trans "There was a server error" %}</p>
-</div>
-{% endblock content %}
+{% block error_code %}
+HTTP 404
+{% endblock error_code %}
+
+{% block error_desc %}
+{% trans "Server error" %}
+{% endblock error_desc %}

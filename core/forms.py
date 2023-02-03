@@ -13,8 +13,11 @@ class NewUserForm(UserCreationForm):
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
         error_messages = {
             'email': {
-                'unique': _("There is already an accound with this email address.")
+                'unique': _("There is already an account with this email address.")
             },
+        }
+        help_texts = {
+            'email': _('Please note that you have to validate this email later.'),
         }
     
     def clean_password2(self):

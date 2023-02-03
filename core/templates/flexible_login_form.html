@@ -1,0 +1,38 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{{ caption }}{% endblock title %}
+
+{% block caption %}
+<h1 class="hi">{% trans "Hi!" %}</h1>
+{% if request.user.is_authenticated %}
+<p>{% trans "Thank you for staying with us. Fill out the form so we can meet you with someone." %}</p>
+{% else %}
+<p>{% trans "Thank you for coming back to us. Fill out the form to proceed." %}</p>
+{% endif %}
+{% endblock caption %}
+
+{% block content %}
+<section>
+	<form method="post">
+		{% csrf_token %}
+		<fieldset>
+			<legend>{{ caption }}</legend>
+			{{ form.non_field_errors }}
+			{% for field in form %}
+			<div>
+				{{ field.errors }}
+				{{ field.label_tag }}
+				{{ field }}
+				{% if field.help_text %}
+				<p class="help">{{ field.help_text|safe }}</p>
+				{% endif %}
+			</div>
+			<br>
+			{% endfor %}
+			<input class="sep" type="submit" value="{{ caption }}">
+		</fieldset>
+	</form>
+</section>
+{% endblock content %}

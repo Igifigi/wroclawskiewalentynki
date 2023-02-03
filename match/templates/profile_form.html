@@ -1,0 +1,45 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "Your profile" %}{% endblock title %}
+
+{% block caption %}
+<h1 class="hi">{% trans "Thank you for being with us!" %}</h1>
+<p>{% trans "Fill out the form below so we can get to know you with someone." %}</p>
+{% endblock caption %}
+
+{% block content %}
+<h2>{% trans "Your profile" %}</h2>
+<h3>{% trans "Tell us something about yourself." %}</h3>
+<section>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.non_field_errors }}
+
+		{% for field in form %}
+		{% if field.id_for_label == "id_accept_terms" %}
+		<div>
+			{{ field.errors }}
+			<label for="{{ field.id_for_label }}">
+				{{ field.label_tag }}
+				<span>{{ field }} {% trans "I accept." %}</span>
+			</label>
+		</div>
+		{% else %}
+		<fieldset>
+			<legend>{{ field.label_tag }}</legend>
+			{{ field.errors }}
+			{{ field }}
+			{% if field.help_text %}
+			<p class="help">{{ field.help_text }}</p>
+			{% endif %}
+		</fieldset>
+		{% endif %}
+		<br>
+		{% endfor %}
+
+		<input class="sep" type="submit" value="{% trans "Submit" %}">		
+	</form>
+</section>
+{% endblock content %}

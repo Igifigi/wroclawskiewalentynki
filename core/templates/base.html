@@ -1,55 +1,100 @@
 ﻿{% load i18n %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="{% get_current_language as lang %}{{ lang }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> {% block title %}{% endblock title %} | Wrocławskie Walentynki</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <div>
-                <a href="{% url 'index' %}" class="navbar-bran">Wrocławskie Walentynki</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </div>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
-                    {% if request.user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'chat' %}">{% trans "Chat" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">{% trans "Log out" %}</a>
-                    </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}">{% trans "Log in" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">{% trans "Sign up" %}</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <li {% if message.tags %}class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}{% endblock title %} | Wrocławskie Walentynki 2023</title>
+		<link rel="stylesheet" href="{% static 'concrete.css' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=2">
+		<link rel="manifest" href="site.webmanifest">
+		<link rel="apple-touch-icon" href="{% static 'icon.png' %}">
+		<link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
+		<style>
+			{% block style %}
+			{% endblock style %}
+			@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+			figure.highlight {
+			margin-left: 0;
+			margin-right: 0;
+			}
+			.row {
+			display: flex;
+			flex-direction: column;
+			padding: 0;
+			}
+			.row .column {
+			display: block;
+			flex: 1 1 auto;
+			margin-left: 0;
+			max-width: 100%;
+			width: 100%;
+			}
+			@media (min-width: 40.0rem) {
+			.row {
+				flex-direction: row;
+				margin: 0 -1rem;
+				width: calc(100% + 2rem);
+			}
+			.row .column {
+				margin-bottom: inherit;
+				padding: 0 1.0rem;
+			}
+			}
+			.hi {
+				color: #6c6a6a;
+			}
+			.sep{
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<header>
+				{% block caption %}
+				{% endblock caption %}
 
-        {% endif %}
-        {% block content %}
-        {% endblock content %}
+				<p>
+					{% if request.user.is_authenticated %}
+					<a href="{% url 'logout' %}"><button>{% trans "Log out" %}</button></a>
+					<a href="{% url 'create_profile' %}"><button>{% trans "Fill out the form" %}</button></a>
+					{% else %}
+					<a href="{% url 'login' %}"><button>{% trans "Log in" %}</button></a>
+					<a href="{% url 'register' %}"><button>{% trans "Sign up" %}</button></a>
+					{% endif %}
+				</p>
+				{% if messages %}
+				<div>
+					{% for message in messages %}
+					<p>{{ message }}</p>
+					{% endfor %}
+				</div>
+				{% endif %}
 
-        {% block script %}
-        {% endblock script %}
-    </body>
+				{% block header %}
+				{% endblock header %}
+			</header>
+				
+				{% block content %}
+				{% endblock content %}
+
+			<footer>
+				<hr/>
+				<div class="column">
+						<a href="{% url 'index' %}">{% trans "Visit the main site" %}</a>
+						<a href="mailto:kontakt@wroclawskiewalentynki.pl"><p>{% trans "Contact" %}</p></a>
+						<a href="{% url 'terms' %}"><p>{% trans "Terms of use" %}</p></a>
+						<a href="{% trans "privacy" %}"><p>{% trans "Privacy policy" %}</p></a>
+				</div>
+				<div class="column">
+						<p>Made in Trójka</p>
+						<p>{% trans "Project carried out as part of Zwolonieni z Teorii" %}</p>
+				</div>
+				{% block footer %}
+				{% endblock footer %}
+			</footer>
+		</main>
+	</body>
 </html>

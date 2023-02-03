@@ -1,0 +1,60 @@
+﻿{% load i18n %}
+{% load static %}
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}{% endblock title %} | Wrocławskie Walentynki 2023</title>
+<link rel="stylesheet" href="{% static 'concrete.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=2">
+<link rel="manifest" href="site.webmanifest">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="https://unpkg.com/normalize.css@8.0.1/normalize.css">
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    figure.highlight {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .row {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    }
+    .row .column {
+      display: block;
+      flex: 1 1 auto;
+      margin-left: 0;
+      max-width: 100%;
+      width: 100%;
+    }
+    @media (min-width: 40.0rem) {
+      .row {
+        flex-direction: row;
+        margin: 0 -1rem;
+        width: calc(100% + 2rem);
+      }
+      .row .column {
+        margin-bottom: inherit;
+        padding: 0 1.0rem;
+      }
+    }
+	.hi {
+		color: #6c6a6a;
+	}
+	.sep{
+		margin-top: 10px;
+	}
+	</style>
+</head>
+<body>
+	<main>
+	<section>
+		<h1 class="hi">{% block error_code %}{% endblock error_code %}</h1>
+		<p>{% block error_desc %}{% endblock error_desc %}</p> 
+		<a href="{% url 'index' %}"><button>{% trans "Go to main site" %}</button></a>
+	</section>
+</main>
+</body>
+</html>

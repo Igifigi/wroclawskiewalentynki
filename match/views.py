@@ -35,7 +35,7 @@ def create_profile(request):
         'form_title': _('Create your profile'),
         'submit_button_label': _('Submit'),
     }
-    return render(request, template_name='flexible_form.html', context=context)
+    return render(request, template_name='profile_form.html', context=context)
 
 @login_required
 def edit_profile(request):
@@ -56,7 +56,7 @@ def edit_profile(request):
         'form_title': _('Edit your profile'),
         'submit_button_label': _('Submit'),
     }
-    return render(request, template_name='flexible_form.html', context=context)
+    return render(request, template_name='profile_form.html', context=context)
 
 @login_required
 @permission_required('match.match', raise_exception=True)

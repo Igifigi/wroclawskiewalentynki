@@ -1,13 +1,11 @@
 ﻿{% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% trans "Main site" %}{% endblock title %}
-
 {% block caption %}
 <h1 class="hi">{% trans "Hi!" %}</h1>
 {% if request.user.is_authenticated %}
 <p>{% trans "Thank you for staying with us. Fill out the form so we can meet you with someone." %}</p>
 {% else %}
-<p>{% trans "Thank you for coming back to us. Select one of the options to proceed." %}</p>
+<p>{% trans "Thank you for coming back to us. Fill out the form to proceed." %}</p>
 {% endif %}
 {% endblock caption %}

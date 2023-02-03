@@ -12,7 +12,7 @@ from .forms import NewUserForm
 from .utils import send_confirmation_mail
 
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')
 
 def register_request(request):
     if request.method == 'POST':
@@ -28,9 +28,10 @@ def register_request(request):
             messages.error(request, error)
     form = NewUserForm()
     context = {
-        "register_form": form
+        'caption': _('Sign up'),
+        'form': form,
     }
-    return render(request, template_name='register.html', context=context)
+    return render(request, template_name='flexible_login_form.html', context=context)
 
 def login_request(request):
     if request.method == 'POST':
@@ -47,9 +48,10 @@ def login_request(request):
             messages.error(request, error)
     form = AuthenticationForm()
     context = {
-        "login_form": form
+        'caption': _('Log in'),
+        'form': form,
     }
-    return render(request, 'login.html', context=context)
+    return render(request, template_name='flexible_login_form.html', context=context)
 
 def logout_request(request):
     logout(request)
