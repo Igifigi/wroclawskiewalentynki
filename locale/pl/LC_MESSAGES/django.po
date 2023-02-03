@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 19:40+0100\n"
+"POT-Creation-Date: 2023-02-03 21:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,8 +24,15 @@ msgstr ""
 msgid "Chat"
 msgstr "Czat"
 
+#: .\core\forms.py:8
+msgid "First name"
+msgstr "Imię"
+
+#: .\core\forms.py:9
+msgid "Last name"
+msgstr "Nazwisko"
+
 #: .\core\forms.py:16
-#| msgid "There is already an accound with this email address."
 msgid "There is already an account with this email address."
 msgstr "Istnieje już konto przypisane do tego adresu email."
 
@@ -57,7 +64,6 @@ msgid "Page not found"
 msgstr "Strona nie została znaleziona"
 
 #: .\core\templates\500.html:11
-#| msgid "There was a server error"
 msgid "Server error"
 msgstr "Wystąpił błąd serwera"
 
@@ -69,7 +75,7 @@ msgstr "Wyloguj się"
 msgid "Fill out the form"
 msgstr "Wypełnij formularz"
 
-#: .\core\templates\base.html:64 .\core\views.py:51
+#: .\core\templates\base.html:64 .\core\views.py:52
 msgid "Log in"
 msgstr "Zaloguj się"
 
@@ -110,11 +116,13 @@ msgid ""
 "Thank you for staying with us. Fill out the form so we can meet you with "
 "someone."
 msgstr ""
+"Dziękujemy, że jesteś z nami. Wypełnij formularz, abyśmy mogli Cię z kimś "
+"poznać."
 
 #: .\core\templates\base_form.html:9
 #: .\core\templates\flexible_login_form.html:12
 msgid "Thank you for coming back to us. Fill out the form to proceed."
-msgstr ""
+msgstr "Dziękujemy, że do nas wracasz. Wypełnij formularz, aby kontynuować."
 
 #: .\core\templates\emails\validate.html:5
 msgid "Confirm e-mail address"
@@ -173,17 +181,18 @@ msgid "Message generated automatically. Please do not reply to it."
 msgstr "Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać."
 
 #: .\core\templates\index.html:4
-#| msgid "Main page"
 msgid "Main site"
 msgstr "Strona główna"
 
 #: .\core\templates\index.html:11
 msgid "Thank you for coming back to us. Select one of the options to proceed."
-msgstr "Dziękujemy, że do nas wróciłeś. Wybierz jedną z opcji, aby kontynuować."
+msgstr ""
+"Dziękujemy, że do nas wróciłeś. Wybierz jedną z opcji, aby kontynuować."
 
 #: .\core\templates\privacy_policy.html:8 .\core\templates\terms.html:8
 msgid "See the document below or use the options listed."
-msgstr "Zapoznaj się z poniższym dokumentem lub skorzystaj z wymienionych opcji."
+msgstr ""
+"Zapoznaj się z poniższym dokumentem lub skorzystaj z wymienionych opcji."
 
 #: .\core\views.py:25
 #, python-brace-format
@@ -194,20 +203,20 @@ msgstr ""
 "Odwiedź swój adres {user.email}, by zweryfikować swoje konto. Pamiętaj, aby "
 "sprawdzić folder SPAM."
 
-#: .\core\views.py:45
+#: .\core\views.py:46
 #, python-brace-format
 msgid "You are now logged in as {username}."
 msgstr "Jesteś teraz zalogowany/a jako {username}"
 
-#: .\core\views.py:58
+#: .\core\views.py:59
 msgid "You have successfully logged out."
 msgstr "Wylogowano pomyślnie."
 
-#: .\core\views.py:75
+#: .\core\views.py:76
 msgid "Successfully activated email. You can now login to your account."
 msgstr "Aktywacja konta przebiegła pomyślnie. Teraz możesz się zalogować."
 
-#: .\core\views.py:78
+#: .\core\views.py:79
 msgid "Activation link is invalid!"
 msgstr "Link aktywacyjny jest błędny."
 
@@ -450,9 +459,9 @@ msgid "TikTok profile link (non-obligatory)"
 msgstr "Link do profilu na TikToku (nieobowiązkowe)"
 
 #: .\match\models.py:37
-#| msgid "I accept terms of use (available in the footer of the page)."
 msgid "Terms of use and privacy policy (available in the footer of the page)."
-msgstr "Akceptuję Regulamin oraz Politykę prywatności (dostępne w stopce strony)."
+msgstr ""
+"Akceptuję Regulamin oraz Politykę prywatności (dostępne w stopce strony)."
 
 #: .\match\templates\match_result.html:4 .\match\templates\match_result.html:9
 msgid "Match result"
@@ -471,7 +480,6 @@ msgid "Users without profile"
 msgstr "Użytkownicy bez profilu"
 
 #: .\match\templates\profile_form.html:5 .\match\templates\profile_form.html:13
-#| msgid "Edit your profile"
 msgid "Your profile"
 msgstr "Twój profil"
 

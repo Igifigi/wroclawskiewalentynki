@@ -5,8 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    first_name = forms.CharField(max_length=20, required=True)
-    last_name = forms.CharField(max_length=50, required=True)
+    first_name = forms.CharField(max_length=20, required=True, label=_('First name'))
+    last_name = forms.CharField(max_length=50, required=True, label=_('Last name'))
     
     class Meta:
         model = User
