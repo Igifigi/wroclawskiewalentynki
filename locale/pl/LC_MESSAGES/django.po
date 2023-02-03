@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-02 21:53+0100\n"
+"POT-Creation-Date: 2023-02-03 19:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,20 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: .\chat\templates\chat.html:5 .\core\templates\base.html:25
+#: .\chat\templates\chat.html:5
 msgid "Chat"
 msgstr "Czat"
 
 #: .\core\forms.py:16
-msgid "There is already an accound with this email address."
+#| msgid "There is already an accound with this email address."
+msgid "There is already an account with this email address."
 msgstr "Istnieje już konto przypisane do tego adresu email."
 
-#: .\core\forms.py:24
+#: .\core\forms.py:20
+msgid "Please note that you have to validate this email later."
+msgstr "Pamiętaj, że później musisz zweryfikować ten e-mail."
+
+#: .\core\forms.py:27
 msgid "Passwords do not match."
 msgstr "Hasła nie są takie same."
 
@@ -52,22 +57,64 @@ msgid "Page not found"
 msgstr "Strona nie została znaleziona"
 
 #: .\core\templates\500.html:11
-msgid "There was a server error"
+#| msgid "There was a server error"
+msgid "Server error"
 msgstr "Wystąpił błąd serwera"
 
-#: .\core\templates\base.html:28
+#: .\core\templates\base.html:61
 msgid "Log out"
 msgstr "Wyloguj się"
 
-#: .\core\templates\base.html:32 .\core\templates\login.html:4
-#: .\core\templates\login.html:10 .\core\templates\login.html:14
-#: .\core\templates\register.html:4
+#: .\core\templates\base.html:62
+msgid "Fill out the form"
+msgstr "Wypełnij formularz"
+
+#: .\core\templates\base.html:64 .\core\views.py:51
 msgid "Log in"
 msgstr "Zaloguj się"
 
-#: .\core\templates\base.html:35
+#: .\core\templates\base.html:65 .\core\views.py:31
 msgid "Sign up"
 msgstr "Zarejestruj się"
+
+#: .\core\templates\base.html:86 .\core\templates\base_error.html:56
+msgid "Visit the main site"
+msgstr "Odwiedź stronę główną"
+
+#: .\core\templates\base.html:87
+msgid "Contact"
+msgstr "Kontakt"
+
+#: .\core\templates\base.html:88 .\core\templates\privacy_policy.html:4
+#: .\core\templates\terms.html:4
+msgid "Terms of use"
+msgstr "Regulamin"
+
+#: .\core\templates\base.html:89
+msgid "Privacy policy"
+msgstr "Polityka prywatności"
+
+#: .\core\templates\base.html:93
+msgid "Project carried out as part of Zwolonieni z Teorii"
+msgstr "Projekt realizowany w ramach Zwolnionych z Teorii"
+
+#: .\core\templates\base_form.html:5
+#: .\core\templates\flexible_login_form.html:8 .\core\templates\index.html:7
+#: .\core\templates\privacy_policy.html:7 .\core\templates\terms.html:7
+msgid "Hi!"
+msgstr "Cześć!"
+
+#: .\core\templates\base_form.html:7
+#: .\core\templates\flexible_login_form.html:10 .\core\templates\index.html:9
+msgid ""
+"Thank you for staying with us. Fill out the form so we can meet you with "
+"someone."
+msgstr ""
+
+#: .\core\templates\base_form.html:9
+#: .\core\templates\flexible_login_form.html:12
+msgid "Thank you for coming back to us. Fill out the form to proceed."
+msgstr ""
 
 #: .\core\templates\emails\validate.html:5
 msgid "Confirm e-mail address"
@@ -126,42 +173,17 @@ msgid "Message generated automatically. Please do not reply to it."
 msgstr "Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać."
 
 #: .\core\templates\index.html:4
-msgid "Main page"
+#| msgid "Main page"
+msgid "Main site"
 msgstr "Strona główna"
 
-#: .\core\templates\login.html:17
-#, python-format
-msgid ""
-"\n"
-"\t<p class=\"text-center\">Don't have an account? <a href=\"%(register_url)s"
-"\">Create an acccount</a>.</p>\n"
-"\t"
-msgstr ""
-"\n"
-"\t<p class=\"text-center\">Nie masz konta? <a href=\"%(register_url)s"
-"\">Zarejestruj się</a>.</p>\n"
-"\t"
+#: .\core\templates\index.html:11
+msgid "Thank you for coming back to us. Select one of the options to proceed."
+msgstr "Dziękujemy, że do nas wróciłeś. Wybierz jedną z opcji, aby kontynuować."
 
-#: .\core\templates\register.html:10 .\core\templates\register.html:15
-msgid "Register"
-msgstr "Zarejestruj się"
-
-#: .\core\templates\register.html:19
-#, python-format
-msgid ""
-"\n"
-"        If you already have an account, <a href=\"%(login_url)s\">log in "
-"instead.</a>\n"
-"        "
-msgstr ""
-"\n"
-"        Jeśli masz już kontro, <a href=\"%(login_url)s\">zaloguj się "
-".</a>\n"
-"        "
-
-#: .\core\templates\terms.html:4 .\core\templates\terms.html:10
-msgid "Terms of use"
-msgstr "Regulamin"
+#: .\core\templates\privacy_policy.html:8 .\core\templates\terms.html:8
+msgid "See the document below or use the options listed."
+msgstr "Zapoznaj się z poniższym dokumentem lub skorzystaj z wymienionych opcji."
 
 #: .\core\views.py:25
 #, python-brace-format
@@ -172,20 +194,20 @@ msgstr ""
 "Odwiedź swój adres {user.email}, by zweryfikować swoje konto. Pamiętaj, aby "
 "sprawdzić folder SPAM."
 
-#: .\core\views.py:44
+#: .\core\views.py:45
 #, python-brace-format
 msgid "You are now logged in as {username}."
 msgstr "Jesteś teraz zalogowany/a jako {username}"
 
-#: .\core\views.py:56
+#: .\core\views.py:58
 msgid "You have successfully logged out."
 msgstr "Wylogowano pomyślnie."
 
-#: .\core\views.py:73
+#: .\core\views.py:75
 msgid "Successfully activated email. You can now login to your account."
 msgstr "Aktywacja konta przebiegła pomyślnie. Teraz możesz się zalogować."
 
-#: .\core\views.py:76
+#: .\core\views.py:78
 msgid "Activation link is invalid!"
 msgstr "Link aktywacyjny jest błędny."
 
@@ -382,7 +404,9 @@ msgstr "Idealna randka/spotkanie to:"
 msgid ""
 "You have a geo test tomorrow, but you were supposed to meet your friends "
 "today. What do you do?"
-msgstr "Masz jutro sprawdzian z geografii, ale miał*ś się dziś spotkać ze znajomymi. Co robisz?"
+msgstr ""
+"Masz jutro sprawdzian z geografii, ale miał*ś się dziś spotkać ze znajomymi. "
+"Co robisz?"
 
 #: .\match\models.py:27
 msgid "In free time:"
@@ -390,7 +414,8 @@ msgstr "W wolnym czasie:"
 
 #: .\match\models.py:28
 msgid "If you had to listen to one musician for the next year, it would be:"
-msgstr "Jeśli miałbyś/miałabyś słuchać jednego muzyka przez najbliższy rok, byłby to:"
+msgstr ""
+"Jeśli miałbyś/miałabyś słuchać jednego muzyka przez najbliższy rok, byłby to:"
 
 #: .\match\models.py:29
 msgid "On a scale of 1 to 10, how decisive are you?"
@@ -425,8 +450,9 @@ msgid "TikTok profile link (non-obligatory)"
 msgstr "Link do profilu na TikToku (nieobowiązkowe)"
 
 #: .\match\models.py:37
-msgid "I accept terms of use (available in the footer of the page)."
-msgstr "Akceptuję Regulamin (dostępny w stopce strony)."
+#| msgid "I accept terms of use (available in the footer of the page)."
+msgid "Terms of use and privacy policy (available in the footer of the page)."
+msgstr "Akceptuję Regulamin oraz Politykę prywatności (dostępne w stopce strony)."
 
 #: .\match\templates\match_result.html:4 .\match\templates\match_result.html:9
 msgid "Match result"
@@ -444,6 +470,32 @@ msgstr "Użytkownicy niedopasowani"
 msgid "Users without profile"
 msgstr "Użytkownicy bez profilu"
 
+#: .\match\templates\profile_form.html:5 .\match\templates\profile_form.html:13
+#| msgid "Edit your profile"
+msgid "Your profile"
+msgstr "Twój profil"
+
+#: .\match\templates\profile_form.html:8
+msgid "Thank you for being with us!"
+msgstr "Dziękujemy, że z nami jesteś!"
+
+#: .\match\templates\profile_form.html:9
+msgid "Fill out the form below so we can get to know you with someone."
+msgstr "Wypełnij poniższy formularz, żebyśmy mogli Cię z kimś poznać."
+
+#: .\match\templates\profile_form.html:14
+msgid "Tell us something about yourself."
+msgstr "Powiedz nam coś o sobie."
+
+#: .\match\templates\profile_form.html:26
+msgid "I accept."
+msgstr "Akceptuję."
+
+#: .\match\templates\profile_form.html:42 .\match\views.py:36
+#: .\match\views.py:57
+msgid "Submit"
+msgstr "Zatwierdź"
+
 #: .\match\templates\start_matching.html:4 .\match\views.py:65
 msgid "Start matching"
 msgstr "Rozpocznij łączenie"
@@ -456,7 +508,8 @@ msgstr "Proceduj"
 msgid ""
 "Please remember to make a backup of the database! (before clicking OK button)"
 msgstr ""
-"Pamiętaj, by zrobić kopię zapasową bazy danych! (przed klinięciem przycisku OK)"
+"Pamiętaj, by zrobić kopię zapasową bazy danych! (przed klinięciem przycisku "
+"OK)"
 
 #: .\match\views.py:16
 msgid "You need to activate your account."
@@ -474,10 +527,6 @@ msgstr "Niepomyślnie"
 msgid "Create your profile"
 msgstr "Stwórz swój profil"
 
-#: .\match\views.py:36 .\match\views.py:57
-msgid "Submit"
-msgstr "Zatwierdź"
-
 #: .\match\views.py:48
 msgid "Successfully updated profile."
 msgstr "Profil został pomyślnie zaktualizowany."
@@ -491,9 +540,9 @@ msgid ""
 "Are you sure to start the matching process? It may take a while (depends on "
 "how much data does it have). Remember to make a backup of the database!"
 msgstr ""
-"Jesteś pewny, że chcesz rozpocząć proces dopasowywania użytkowników? "
-"Może on chwilę zając (zależy od ilości użytkowników). "
-"Pamiętaj, by zrobić kopię zapasową bazy danych przed procedowaniem dalej!"
+"Jesteś pewny, że chcesz rozpocząć proces dopasowywania użytkowników? Może on "
+"chwilę zająć (zależy od ilości użytkowników). Pamiętaj, by zrobić kopię "
+"zapasową bazy danych przed procedowaniem dalej!"
 
 #: .\match\views.py:75
 msgid "Matching, please wait"
@@ -506,3 +555,30 @@ msgstr "Proces dopasowywania się rozpoczął. Proszę chwilę poczekać."
 #: .\match\views.py:77
 msgid "Go to result"
 msgstr "Idź do wyników"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "\t<p class=\"text-center\">Don't have an account? <a href="
+#~ "\"%(register_url)s\">Create an acccount</a>.</p>\n"
+#~ "\t"
+#~ msgstr ""
+#~ "\n"
+#~ "\t<p class=\"text-center\">Nie masz konta? <a href=\"%(register_url)s"
+#~ "\">Zarejestruj się</a>.</p>\n"
+#~ "\t"
+
+#~ msgid "Register"
+#~ msgstr "Zarejestruj się"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "        If you already have an account, <a href=\"%(login_url)s\">log in "
+#~ "instead.</a>\n"
+#~ "        "
+#~ msgstr ""
+#~ "\n"
+#~ "        Jeśli masz już kontro, <a href=\"%(login_url)s\">zaloguj się .</"
+#~ "a>\n"
+#~ "        "
