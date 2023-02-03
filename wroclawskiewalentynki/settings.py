@@ -16,8 +16,19 @@ from pathlib import Path
 """
 To run app:
 1) Create localsettings.py file in the same directory as this one
-2) Set 'DEBUG', 'SECRET_KEY', 'EMAIL_BACKEND', 'EMAIL_HOST', 'EMAIL_FROM'
-'EMAIL_HOST_USER', 'EMAIL_HOST_PASSWORD', 'EMAIL_PORT' AND 'NOREPLY_EMAIL'.
+2) Set
+* 'ALLOWED HOSTS' - array of server hosts,
+* 'LANGUAGE_CODE' - set language of the app (currently only en-us and pl),
+* 'DEBUG' - do not set this to True in deployment,
+* 'SECRET_KEY' - key to secure website, use something long,
+* 'EMAIL_BACKEND' - backend used to send mails (default is specified),
+* 'EMAIL_HOST' - mailing server you will use,
+* 'EMAIL_FROM' - email that will be shown as sender in client's mail app,
+* 'EMAIL_HOST_USER' - mailing server user you'd set,
+* 'EMAIL_HOST_PASSWORD' - password for mailing sever user,
+* 'EMAIL_PORT' - port of your mailing server used for sending, fe. using SMTP,
+* 'NOREPLY_EMAIL' - email that will send noreply messages,
+* 'WWW_SITE' - site that will be displayed in every noreply message with confirmation.
 """
 
 
@@ -40,6 +51,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_HOST_PASSWORD =
 # EMAIL_PORT =
 # NOREPLY_EMAIL =
+# WWW_SITE =
 EMAIL_USE_SSL = True
 
 PASSWORD_RESET_TIMEOUT = 14400
@@ -167,6 +179,12 @@ MEDIA_ROOT = 'mediafiles/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_SSL_REDIRECT = True
 
 try:
     from .localsettings import *
