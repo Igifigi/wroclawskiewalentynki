@@ -14,7 +14,6 @@
 # 3) Who would you like to be matched with?
 - boy
 - girl
-- non-binary person
 - it doesn't matter
 
 # 4) I want to meet:

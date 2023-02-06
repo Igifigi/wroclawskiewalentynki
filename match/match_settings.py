@@ -19,8 +19,7 @@ class Q2(models.IntegerChoices):
 class Q3(models.IntegerChoices):
     BOY = 1, _('Boy'),
     GIRL = 2, _('Girl'),
-    NON_BINARY = 3, _('Non-binary person'),
-    IDC = 4, _('I don\'t care'),
+    IDC = 3, _('I don\'t care'),
 
 # I want to meet:
 class Q4(models.IntegerChoices):
