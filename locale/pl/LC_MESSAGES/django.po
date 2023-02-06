@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-03 21:51+0100\n"
+"POT-Creation-Date: 2023-02-06 12:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-
-#: .\chat\templates\chat.html:5
-msgid "Chat"
-msgstr "Czat"
 
 #: .\core\forms.py:8
 msgid "First name"
@@ -67,40 +63,40 @@ msgstr "Strona nie została znaleziona"
 msgid "Server error"
 msgstr "Wystąpił błąd serwera"
 
-#: .\core\templates\base.html:61
+#: .\core\templates\base.html:63
 msgid "Log out"
 msgstr "Wyloguj się"
 
-#: .\core\templates\base.html:62
+#: .\core\templates\base.html:64
 msgid "Fill out the form"
 msgstr "Wypełnij formularz"
 
-#: .\core\templates\base.html:64 .\core\views.py:52
+#: .\core\templates\base.html:66 .\core\views.py:51
 msgid "Log in"
 msgstr "Zaloguj się"
 
-#: .\core\templates\base.html:65 .\core\views.py:31
+#: .\core\templates\base.html:67 .\core\views.py:31
 msgid "Sign up"
 msgstr "Zarejestruj się"
 
-#: .\core\templates\base.html:86 .\core\templates\base_error.html:56
+#: .\core\templates\base.html:88 .\core\templates\base_error.html:56
 msgid "Visit the main site"
 msgstr "Odwiedź stronę główną"
 
-#: .\core\templates\base.html:87
+#: .\core\templates\base.html:89
 msgid "Contact"
 msgstr "Kontakt"
 
-#: .\core\templates\base.html:88 .\core\templates\privacy_policy.html:4
+#: .\core\templates\base.html:90 .\core\templates\privacy_policy.html:4
 #: .\core\templates\terms.html:4
 msgid "Terms of use"
 msgstr "Regulamin"
 
-#: .\core\templates\base.html:89
+#: .\core\templates\base.html:91
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: .\core\templates\base.html:93
+#: .\core\templates\base.html:95
 msgid "Project carried out as part of Zwolonieni z Teorii"
 msgstr "Projekt realizowany w ramach Zwolnionych z Teorii"
 
@@ -195,28 +191,28 @@ msgstr ""
 "Zapoznaj się z poniższym dokumentem lub skorzystaj z wymienionych opcji."
 
 #: .\core\views.py:25
-#, python-brace-format
+#,  python-format
 msgid ""
-"Please go to your email {user.email} to verify your account. Remember to "
-"check your SPAM folder."
+"Please go to your email %s to verify your account. Remember to check your "
+"SPAM folder."
 msgstr ""
-"Odwiedź swój adres {user.email}, by zweryfikować swoje konto. Pamiętaj, aby "
+"Odwiedź swój adres %s, by zweryfikować swoje konto. Pamiętaj, aby "
 "sprawdzić folder SPAM."
 
-#: .\core\views.py:46
-#, python-brace-format
-msgid "You are now logged in as {username}."
-msgstr "Jesteś teraz zalogowany/a jako {username}"
+#: .\core\views.py:45
+#, python-format
+msgid "You are now logged in as %s."
+msgstr "Jesteś teraz zalogowany/a jako %s"
 
-#: .\core\views.py:59
+#: .\core\views.py:58
 msgid "You have successfully logged out."
 msgstr "Wylogowano pomyślnie."
 
-#: .\core\views.py:76
+#: .\core\views.py:75
 msgid "Successfully activated email. You can now login to your account."
 msgstr "Aktywacja konta przebiegła pomyślnie. Teraz możesz się zalogować."
 
-#: .\core\views.py:79
+#: .\core\views.py:78
 msgid "Activation link is invalid!"
 msgstr "Link aktywacyjny jest błędny."
 
@@ -563,6 +559,9 @@ msgstr "Proces dopasowywania się rozpoczął. Proszę chwilę poczekać."
 #: .\match\views.py:77
 msgid "Go to result"
 msgstr "Idź do wyników"
+
+#~ msgid "Chat"
+#~ msgstr "Czat"
 
 #, python-format
 #~ msgid ""

@@ -22,7 +22,7 @@ def register_request(request):
             user.is_active = False
             user.save()
             send_confirmation_mail(user)
-            messages.success(request, _(f"Please go to your email {user.email} to verify your account. Remember to check your SPAM folder."))
+            messages.success(request, _("Please go to your email %s to verify your account. Remember to check your SPAM folder.") % user.email)
             return redirect('index')
         for error in form.errors.values():
             messages.error(request, error)
@@ -42,7 +42,7 @@ def login_request(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.info(request, _(f"You are now logged in as {username}."))
+                messages.info(request, _("You are now logged in as %s.") % username)
                 return redirect('index') #TODO: change
         for error in form.errors.values():
             messages.error(request, error)
