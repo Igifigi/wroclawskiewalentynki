@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 12:27+0100\n"
+"POT-Creation-Date: 2023-02-06 14:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,17 +28,17 @@ msgstr "Imię"
 msgid "Last name"
 msgstr "Nazwisko"
 
-#: .\core\forms.py:16
-msgid "There is already an account with this email address."
-msgstr "Istnieje już konto przypisane do tego adresu email."
-
-#: .\core\forms.py:20
+#: .\core\forms.py:15
 msgid "Please note that you have to validate this email later."
 msgstr "Pamiętaj, że później musisz zweryfikować ten e-mail."
 
-#: .\core\forms.py:27
+#: .\core\forms.py:22
 msgid "Passwords do not match."
 msgstr "Hasła nie są takie same."
+
+#: .\core\forms.py:27
+msgid "There is already an account assigned to this email address."
+msgstr "Istnieje już konto przypisane do tego adresu email."
 
 #: .\core\plain_mails.py:6
 msgid "Verify e-mail address"
@@ -368,44 +368,48 @@ msgstr "Biologia/chemia"
 msgid "PE"
 msgstr "WF"
 
-#: .\match\models.py:10
-msgid "Name"
-msgstr "Imię"
+#: .\match\models.py:12
+msgid "Acceptance of the terms is required."
+msgstr ""
 
-#: .\match\models.py:11
-msgid "Code"
-msgstr "Kod"
-
-#: .\match\models.py:15
+#: .\match\models.py:17
 #, python-format
 msgid "%(code)s is not valid school code"
 msgstr "%(code)s nie jest poprawnym kodem szkoły"
 
-#: .\match\models.py:19
+#: .\match\models.py:20
+msgid "Name"
+msgstr "Imię"
+
+#: .\match\models.py:21
+msgid "Code"
+msgstr "Kod"
+
+#: .\match\models.py:25
 msgid "School code"
 msgstr "Kod szkoły"
 
-#: .\match\models.py:21
+#: .\match\models.py:27
 msgid "What class are you in?"
 msgstr "W której klasie jesteś?"
 
-#: .\match\models.py:22
+#: .\match\models.py:28
 msgid "You identify yourself as:"
 msgstr "Identyfikujesz się jako:"
 
-#: .\match\models.py:23
+#: .\match\models.py:29
 msgid "Who would you like to be matched with?"
 msgstr "Do kogo chciałbyś/chciałabyś być dopasowan*?"
 
-#: .\match\models.py:24
+#: .\match\models.py:30
 msgid "I want to meet:"
 msgstr "Chcę się spotkać:"
 
-#: .\match\models.py:25
+#: .\match\models.py:31
 msgid "The ideal date/meeting is:"
 msgstr "Idealna randka/spotkanie to:"
 
-#: .\match\models.py:26
+#: .\match\models.py:32
 msgid ""
 "You have a geo test tomorrow, but you were supposed to meet your friends "
 "today. What do you do?"
@@ -413,51 +417,50 @@ msgstr ""
 "Masz jutro sprawdzian z geografii, ale miał*ś się dziś spotkać ze znajomymi. "
 "Co robisz?"
 
-#: .\match\models.py:27
+#: .\match\models.py:33
 msgid "In free time:"
 msgstr "W wolnym czasie:"
 
-#: .\match\models.py:28
+#: .\match\models.py:34
 msgid "If you had to listen to one musician for the next year, it would be:"
 msgstr ""
 "Jeśli miałbyś/miałabyś słuchać jednego muzyka przez najbliższy rok, byłby to:"
 
-#: .\match\models.py:29
+#: .\match\models.py:35
 msgid "On a scale of 1 to 10, how decisive are you?"
 msgstr "W skali od 1 do 10, jak bardzo decyzyjn* jesteś?"
 
-#: .\match\models.py:30
+#: .\match\models.py:36
 msgid "Dogs or perhaps cats?"
 msgstr "Psy, czy może jednak koty?"
 
-#: .\match\models.py:31
+#: .\match\models.py:37
 msgid "How spontaneous are you?"
 msgstr "Jak bardzo sponataniczn* jesteś?"
 
-#: .\match\models.py:32
+#: .\match\models.py:38
 msgid "Do you avoid serious topics?"
 msgstr "Unikasz poważnych tematów?"
 
-#: .\match\models.py:33
+#: .\match\models.py:39
 msgid "My favorite subject at school is:"
 msgstr "Mój ulubiony przedmiot w szkole to:"
 
-#: .\match\models.py:34
+#: .\match\models.py:40
 msgid "Instagram profile link (non-obligatory)"
 msgstr "Link do profilu na Instagramie (nieobowiązkowe)"
 
-#: .\match\models.py:35
+#: .\match\models.py:41
 msgid "Facebook profile link (non-obligatory)"
 msgstr "Link do profilu na Facebooku (nieobowiązkowe)"
 
-#: .\match\models.py:36
+#: .\match\models.py:42
 msgid "TikTok profile link (non-obligatory)"
 msgstr "Link do profilu na TikToku (nieobowiązkowe)"
 
-#: .\match\models.py:37
+#: .\match\models.py:43
 msgid "Terms of use and privacy policy."
-msgstr ""
-"Akceptuję Regulamin oraz Politykę prywatności."
+msgstr "Akceptuję Regulamin oraz Politykę prywatności."
 
 #: .\match\templates\match_result.html:4 .\match\templates\match_result.html:9
 msgid "Match result"
@@ -520,8 +523,10 @@ msgid "You need to activate your account."
 msgstr "Musisz aktywować swoje konto."
 
 #: .\match\views.py:27
-msgid "Successfully created profile."
-msgstr "Pomyślnie utworzono profil."
+msgid ""
+"Successfully created profile. Thank you for filling up the form! You'll get "
+"access to chat with our match on February 14."
+msgstr ""
 
 #: .\match\views.py:29 .\match\views.py:50
 msgid "Unsuccessful"

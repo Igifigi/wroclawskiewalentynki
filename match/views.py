@@ -24,7 +24,7 @@ def create_profile(request):
             object.user = request.user
             object.matched = False
             object.save()
-            messages.success(request, _("Successfully created profile."))
+            messages.success(request, _("Successfully created profile. Thank you for filling up the form! You'll get access to chat with our match on February 14."))
             return redirect('index') # TODO: change
         messages.error(request, _("Unsuccessful")) # TODO: make error message
     else:

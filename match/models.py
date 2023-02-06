@@ -6,13 +6,19 @@ from django.utils.translation import gettext as _
 
 from .match_settings import *
 
-class School(models.Model):
-    name = models.CharField(_("Name"), max_length=100)
-    code = models.CharField(_("Code"), max_length=3, validators=[MinLengthValidator(3)])
+def validate_accept(accept):
+    if not accept:
+        raise ValidationError(
+            _('Acceptance of the terms is required.')
+        )
 
 def validate_school(code):
     if not School.objects.filter(code=code):
         raise ValidationError(_('%(code)s is not valid school code'), params={'code': code})
+
+class School(models.Model):
+    name = models.CharField(_("Name"), max_length=100)
+    code = models.CharField(_("Code"), max_length=3, validators=[MinLengthValidator(3)])
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, related_name='profile', on_delete=models.CASCADE, default=None)
@@ -34,7 +40,7 @@ class UserProfile(models.Model):
     instagram = models.URLField(_('Instagram profile link (non-obligatory)'), max_length=200, blank=True)
     facebook = models.URLField(_('Facebook profile link (non-obligatory)'), max_length=200, blank=True)
     tiktok = models.URLField(_('TikTok profile link (non-obligatory)'), max_length=200, blank=True)
-    accept_terms = models.BooleanField(_('Terms of use and privacy policy.'), default=None)
+    accept_terms = models.BooleanField(_('Terms of use and privacy policy.'), default=None, blank=False, validators=[validate_accept])
     
     def __str__(self):
         return f'{self.user}, {self.school}, matched: {self.matched}'

@@ -11,11 +11,6 @@ class NewUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
-        error_messages = {
-            'email': {
-                'unique': _("There is already an account with this email address.")
-            },
-        }
         help_texts = {
             'email': _('Please note that you have to validate this email later.'),
         }
@@ -25,6 +20,12 @@ class NewUserForm(UserCreationForm):
         pass2 = self.cleaned_data.get("password2")
         if pass1 and pass2 and pass1 != pass2:
             raise forms.ValidationError(_("Passwords do not match."))
+    
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(_("There is already an account assigned to this email address."))
+        return email
     
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
