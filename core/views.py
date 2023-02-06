@@ -61,6 +61,9 @@ def logout_request(request):
 def show_terms(request):
     return render(request, 'terms.html')
 
+def show_privacy_policy(request):
+    return render(request, 'privacy_policy.html')
+
 def validate_email(request, uidb64, token):
     print(uidb64, token)    
     try:
