@@ -53,7 +53,7 @@ class Q8(models.IntegerChoices):
     MATA = 1, 'Mata',
     FREDDIE = 2, 'Freddie Mercury',
     MALIK = 3, 'Malik Montana',
-    LUDWIG = 4, 'Ludwig van BeethovenDrake',
+    LUDWIG = 4, 'Ludwig van Beethoven',
     FRANK = 5, 'Frank Sinatra',
     LANA = 6, 'Lana Del Rey',
     ZBIGNIEW = 7, 'Zbigniew Wodecki',
