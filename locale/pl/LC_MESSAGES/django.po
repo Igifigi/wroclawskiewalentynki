@@ -225,19 +225,19 @@ msgstr "Link aktywacyjny jest błędny."
 
 #: .\match\match_settings.py:6
 msgid "First"
-msgstr "Pierwsza"
+msgstr "Pierwszej"
 
 #: .\match\match_settings.py:7
 msgid "Second"
-msgstr "Druga"
+msgstr "Drugiej"
 
 #: .\match\match_settings.py:8
 msgid "Third"
-msgstr "Trzecia"
+msgstr "Trzeciej"
 
 #: .\match\match_settings.py:9
 msgid "Fourth"
-msgstr "Czwarta"
+msgstr "Czwartej"
 
 #: .\match\match_settings.py:13 .\match\match_settings.py:20
 msgid "Boy"
