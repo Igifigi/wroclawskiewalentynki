@@ -34,7 +34,7 @@ class UserProfile(models.Model):
     instagram = models.URLField(_('Instagram profile link (non-obligatory)'), max_length=200, blank=True)
     facebook = models.URLField(_('Facebook profile link (non-obligatory)'), max_length=200, blank=True)
     tiktok = models.URLField(_('TikTok profile link (non-obligatory)'), max_length=200, blank=True)
-    accept_terms = models.BooleanField(_('Terms of use and privacy policy (available in the footer of the page).'), default=None)
+    accept_terms = models.BooleanField(_('Terms of use and privacy policy.'), default=None)
     
     def __str__(self):
         return f'{self.user}, {self.school}, matched: {self.matched}'

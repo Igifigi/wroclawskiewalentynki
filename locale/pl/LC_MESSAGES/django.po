@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 12:14+0100\n"
+"POT-Creation-Date: 2023-02-06 12:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -191,13 +191,13 @@ msgstr ""
 "Zapoznaj się z poniższym dokumentem lub skorzystaj z wymienionych opcji."
 
 #: .\core\views.py:25
-#,  python-format
+#, python-format
 msgid ""
 "Please go to your email %s to verify your account. Remember to check your "
 "SPAM folder."
 msgstr ""
-"Odwiedź swój adres %s, by zweryfikować swoje konto. Pamiętaj, aby "
-"sprawdzić folder SPAM."
+"Odwiedź swój adres %s, by zweryfikować swoje konto. Pamiętaj, aby sprawdzić "
+"folder SPAM."
 
 #: .\core\views.py:45
 #, python-format
@@ -208,11 +208,11 @@ msgstr "Jesteś teraz zalogowany/a jako %s"
 msgid "You have successfully logged out."
 msgstr "Wylogowano pomyślnie."
 
-#: .\core\views.py:75
+#: .\core\views.py:78
 msgid "Successfully activated email. You can now login to your account."
 msgstr "Aktywacja konta przebiegła pomyślnie. Teraz możesz się zalogować."
 
-#: .\core\views.py:78
+#: .\core\views.py:81
 msgid "Activation link is invalid!"
 msgstr "Link aktywacyjny jest błędny."
 
@@ -455,9 +455,9 @@ msgid "TikTok profile link (non-obligatory)"
 msgstr "Link do profilu na TikToku (nieobowiązkowe)"
 
 #: .\match\models.py:37
-msgid "Terms of use and privacy policy (available in the footer of the page)."
+msgid "Terms of use and privacy policy."
 msgstr ""
-"Akceptuję Regulamin oraz Politykę prywatności (dostępne w stopce strony)."
+"Akceptuję Regulamin oraz Politykę prywatności."
 
 #: .\match\templates\match_result.html:4 .\match\templates\match_result.html:9
 msgid "Match result"
