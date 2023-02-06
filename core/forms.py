@@ -13,6 +13,10 @@ class NewUserForm(UserCreationForm):
         fields = ("username", "email", "first_name", "last_name", "password1", "password2")
         help_texts = {
             'email': _('Please note that you have to validate this email later.'),
+            'username': _('Only letters, numbers and special characters.'),
+        }
+        labels = {
+            'password2': _('Repeat password'),
         }
     
     def clean_password2(self):

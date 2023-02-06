@@ -16,7 +16,7 @@ def index(request):
 
 def register_request(request):
     if request.method == 'POST':
-        form = NewUserForm(request.POST)
+        form = NewUserForm(request.POST, label_suffix='')
         if form.is_valid():
             user = form.save(commit=False)
             user.is_active = False
@@ -26,7 +26,7 @@ def register_request(request):
             return redirect('index')
         for error in form.errors.values():
             messages.error(request, error)
-    form = NewUserForm()
+    form = NewUserForm(label_suffix='')
     context = {
         'caption': _('Sign up'),
         'form': form,

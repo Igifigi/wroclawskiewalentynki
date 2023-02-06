@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 14:40+0100\n"
+"POT-Creation-Date: 2023-02-06 14:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,11 +32,19 @@ msgstr "Nazwisko"
 msgid "Please note that you have to validate this email later."
 msgstr "Pamiętaj, że później musisz zweryfikować ten e-mail."
 
-#: .\core\forms.py:22
+#: .\core\forms.py:16
+msgid "Only letters, numbers and special characters."
+msgstr "Dozwolone jedynie liter, cyfry i znaki specjalne."
+
+#: .\core\forms.py:19
+msgid "Repeat password"
+msgstr "Powtórz hasło"
+
+#: .\core\forms.py:26
 msgid "Passwords do not match."
 msgstr "Hasła nie są takie same."
 
-#: .\core\forms.py:27
+#: .\core\forms.py:31
 msgid "There is already an account assigned to this email address."
 msgstr "Istnieje już konto przypisane do tego adresu email."
 
@@ -87,12 +95,11 @@ msgstr "Odwiedź stronę główną"
 msgid "Contact"
 msgstr "Kontakt"
 
-#: .\core\templates\base.html:90 .\core\templates\privacy_policy.html:4
-#: .\core\templates\terms.html:4
+#: .\core\templates\base.html:90 .\core\templates\terms.html:4
 msgid "Terms of use"
 msgstr "Regulamin"
 
-#: .\core\templates\base.html:91
+#: .\core\templates\base.html:91 .\core\templates\privacy_policy.html:4
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
