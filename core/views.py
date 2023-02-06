@@ -43,7 +43,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, _("You are now logged in as %s.") % username)
-                return redirect('index') #TODO: change
+                return redirect('create_profile')
         for error in form.errors.values():
             messages.error(request, error)
     form = AuthenticationForm()

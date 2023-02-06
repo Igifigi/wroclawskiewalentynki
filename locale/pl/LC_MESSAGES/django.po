@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 14:53+0100\n"
+"POT-Creation-Date: 2023-02-06 19:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -536,8 +536,8 @@ msgid ""
 msgstr ""
 
 #: .\match\views.py:29 .\match\views.py:50
-msgid "Unsuccessful"
-msgstr "Niepomyślnie"
+msgid "An error occured. Check fields and resend form."
+msgstr "Wystąpił błąd. Sprawdź pola formularza i prześlij go ponownie."
 
 #: .\match\views.py:34 .\match\views.py:35
 msgid "Create your profile"

@@ -14,7 +14,7 @@ from .utils import export_user_related_database_as_xlsx
 def create_profile(request):
     if not request.user.is_active:
         messages.error(_('You need to activate your account.'))
-        return redirect('index') #TODO: change
+        return redirect('index')
     if UserProfile.objects.filter(user=request.user):
         return redirect('edit_profile')
     if request.method == 'POST':
@@ -25,8 +25,8 @@ def create_profile(request):
             object.matched = False
             object.save()
             messages.success(request, _("Successfully created profile. Thank you for filling up the form! You'll get access to chat with our match on February 14."))
-            return redirect('index') # TODO: change
-        messages.error(request, _("Unsuccessful")) # TODO: make error message
+            return redirect('index')
+        messages.error(request, _("An error occured. Check fields and resend form."))
     else:
         form = UserProfileCreateForm()
     context = {
@@ -46,8 +46,8 @@ def edit_profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, _('Successfully updated profile.'))
-            return redirect('index') # TODO: change
-        messages.error(request, _('Unsuccessful')) # TODO: make error message
+            return redirect('index')
+        messages.error(request, _('An error occured. Check fields and resend form.'))
     else:
         form = UserProfileEditForm(instance=UserProfile.objects.get(user=request.user))
     context = {
