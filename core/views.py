@@ -27,6 +27,7 @@ def register_request(request):
         for error in form.errors.values():
             messages.error(request, error)
     form = NewUserForm(label_suffix='')
+    form.fields['email'].help_text = _('Please note that you have to validate this email later.')
     context = {
         'caption': _('Sign up'),
         'form': form,
