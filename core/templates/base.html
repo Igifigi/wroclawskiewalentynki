@@ -48,6 +48,10 @@
 			.sep{
 				margin-top: 10px;
 			}
+			.footer_caption{
+				margin-block-start: 4px;
+				margin-block-end: 4px;
+			}
 		</style>
 	</head>
 	<body>
@@ -90,7 +94,8 @@
 				</div>
 				<div class="column">
 						<p>Made in Trójka</p>
-						<p>{% trans "Project carried out as part of Zwolonieni z Teorii" %}</p>
+						<p class="footer_caption">{% trans "Project carried out as part of Zwolonieni z Teorii" %}</p>
+						<p style="font-size: 12px">Created by Ignacy Świderski 2023</p>
 				</div>
 				{% block footer %}
 				{% endblock footer %}
