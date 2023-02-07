@@ -51,8 +51,6 @@
 		</style>
 	</head>
 	<body>
-		{% block script %}
-		{% endblock script %}
 		<main>
 			<header>
 				{% block caption %}
@@ -98,5 +96,7 @@
 				{% endblock footer %}
 			</footer>
 		</main>
+		{% block script %}
+		{% endblock script %}
 	</body>
 </html>
