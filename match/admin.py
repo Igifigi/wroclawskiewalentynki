@@ -21,4 +21,6 @@ class SchoolCodeFilter(SimpleListFilter):
 
 @admin.register(UserProfile)
 class UserProfileAdmin(ModelAdmin):
-    list_filter = (SchoolCodeFilter,)
+    questions = [str(UserProfile._meta.get_field(field).name) for field in [field.column for field in UserProfile._meta.fields if ('question' in str(field))]]
+    list_filter = [SchoolCodeFilter, 'matched'] + questions
+    search_fields = ['user__username',]
