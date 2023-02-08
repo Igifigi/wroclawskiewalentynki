@@ -4,7 +4,6 @@ from django.utils.translation import gettext as _
 
 from .models import UserProfile, School, Match
 
-admin.site.register(School)
 admin.site.register(Match)
 
 class SchoolCodeFilter(SimpleListFilter):
@@ -24,3 +23,7 @@ class UserProfileAdmin(ModelAdmin):
     questions = [str(UserProfile._meta.get_field(field).name) for field in [field.column for field in UserProfile._meta.fields if ('question' in str(field))]]
     list_filter = [SchoolCodeFilter, 'matched'] + questions
     search_fields = ['user__username',]
+
+@admin.register(School)
+class SchoolAdmin(ModelAdmin):
+    search_fields = ['name', 'code']

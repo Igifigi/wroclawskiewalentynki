@@ -19,6 +19,9 @@ def validate_school(code):
 class School(models.Model):
     name = models.CharField(_("Name"), max_length=100)
     code = models.CharField(_("Code"), max_length=3, validators=[MinLengthValidator(3)])
+    
+    def __str__(self):
+        return f'{self.name}: {self.code}'
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, unique=True, related_name='profile', on_delete=models.CASCADE, default=None)
