@@ -5,9 +5,11 @@
 {% trans "Confirm e-mail address" %}
 {% endblock title %}
 
-{% block content %}
-<h2>{% trans "Hello!" %}</h2>
+{% block caption %}
 <h1>{% trans "You have received this message because an instruction to create an account on the wroclawskiewalentynki.pl website has been issued." %}</h1>
+{% endblock caption %}
+
+{% block content %}
 <a href="{{ url }}" class="button">
     {% trans "Confirm your e-mail" %}
 </a><br>
@@ -17,17 +19,4 @@
     {{ url }}
 </code>
 </div>
-{% blocktrans %}
-If you did not issue the instruction, write an e-mail to <a href="mailto:kontakt@wroclawskiewalentynki.pl">kontakt@wroclawskiewalentynki.pl</a>.<br>
-Thank you for being part of our community.
-{% endblocktrans %}
-<div class="sign">
-{% blocktrans %}
-Regards,<br>
-Team of Wroclaw Valentine's Day 2023
-{% endblocktrans %}
-</div>
-
-<hr>
-{% trans "Message generated automatically. Please do not reply to it." %}
 {% endblock content %}
