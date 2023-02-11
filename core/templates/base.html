@@ -65,6 +65,7 @@
 					{% if request.user.is_authenticated %}
 					<a href="{% url 'logout' %}"><button>{% trans "Log out" %}</button></a>
 					<a href="{% url 'create_profile' %}"><button>{% trans "Fill out the form" %}</button></a>
+					<a href="{% url 'chat' %}"><button>{% trans "Chat" %}</button></a>
 					{% else %}
 					<a href="{% url 'login' %}"><button>{% trans "Log in" %}</button></a>
 					<a href="{% url 'register' %}"><button>{% trans "Sign up" %}</button></a>
