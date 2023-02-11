@@ -51,6 +51,7 @@ def login_request(request):
     context = {
         'caption': _('Log in'),
         'form': form,
+        'forgot_password': True,
     }
     return render(request, template_name='flexible_login_form.html', context=context)
 

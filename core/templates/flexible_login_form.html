@@ -28,6 +28,10 @@
 				{% if field.help_text %}
 				<p class="help">{{ field.help_text|safe }}</p>
 				{% endif %}
+				{% if field.id_for_label == "id_password" and forgot_password %}
+				<a href="{% url 'password_reset' %}">{% trans "Forgot password?" %}</a>
+				<br>
+				{% endif %}
 			</div>
 			<br>
 			{% endfor %}
