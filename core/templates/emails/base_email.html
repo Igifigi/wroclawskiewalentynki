@@ -49,7 +49,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+	<h2>{% trans "Hello!" %}</h2>
+	{% block caption %}
+	{% endblock caption %}
+	
 	{% block content %}
     {% endblock content %}
+
+	{% blocktrans %}
+	If you did not issue the instruction, write an e-mail to <a href="mailto:kontakt@wroclawskiewalentynki.pl">kontakt@wroclawskiewalentynki.pl</a>.<br>
+	Thank you for being part of our community.
+	{% endblocktrans %}
+
+	{% block footer %}
+	{% endblock footer %}
+
+	<div class="sign">
+		{% blocktrans %}
+		Regards,<br>
+		Team of Wroclaw Valentine's Day 2023
+		{% endblocktrans %}
+	</div>
+	<hr>
+	{% trans "Message generated automatically. Please do not reply to it." %}
 </body>
 </html>

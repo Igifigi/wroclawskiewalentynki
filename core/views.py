@@ -82,3 +82,7 @@ def validate_email(request, uidb64, token):
         messages.error(request, _('Activation link is invalid!'))
         
     return redirect('index')
+
+def message_and_redirect(request, message, redirect_url):
+    messages.info(request, message)
+    return redirect(redirect_url)
