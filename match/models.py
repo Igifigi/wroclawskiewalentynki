@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
 
 from .match_settings import *
+from chat.models import Thread
 
 def validate_accept(accept):
     if not accept:
@@ -51,23 +52,7 @@ class UserProfile(models.Model):
 class Match(models.Model):
     user1 = models.OneToOneField(UserProfile, related_name='match1_set', on_delete=models.CASCADE)
     user2 = models.OneToOneField(UserProfile, related_name='match2_set', on_delete=models.CASCADE)
+    matched_thread = models.ForeignKey(Thread, on_delete=models.DO_NOTHING, null=True, blank=True)
     
     class Meta:
         unique_together = ('user1', 'user2')
-
-
-
-
-
-question7 = models.IntegerField(('In free time:'), choices=Q7.choices, validators=[MinValueValidator(1), MaxValueValidator(5)], default=None)
-question8 = models.IntegerField(('If you had to listen to one musician for the next year, it would be:'), choices=Q8.choices, validators=[MinValueValidator(1), MaxValueValidator(13)], default=None)
-question9 = models.IntegerField(('On a scale of 1 to 10, how decisive are you?'), choices=Q9.choices, validators=[MinValueValidator(1), MaxValueValidator(10)], default=None)
-question10 = models.IntegerField(('Dogs or perhaps cats?'), choices=Q10.choices, validators=[MinValueValidator(1), MaxValueValidator(4)], default=None)
-question11 = models.IntegerField(('How spontaneous are you?'), choices=Q11.choices, validators=[MinValueValidator(1), MaxValueValidator(5)], default=None)
-question12 = models.IntegerField(('Do you avoid serious topics?'), choices=Q12.choices, validators=[MinValueValidator(1), MaxValueValidator(2)], default=None)
-question13 = models.IntegerField(('My favorite subject at school is:'), choices=Q13.choices, validators=[MinValueValidator(1), MaxValueValidator(8)], default=None)
-
-
-
-
-

@@ -29,6 +29,7 @@ To run app:
 * 'EMAIL_PORT' - port of your mailing server used for sending, fe. using SMTP,
 * 'NOREPLY_EMAIL' - email that will send noreply messages,
 * 'WWW_SITE' - site that will be displayed in every noreply message with confirmation.
+* 'MAIN_CHANNEL_HOST' - redis server IP and PORT [tuple (ip, port)], default is ('127.0.0.1', 6379)
 """
 
 
@@ -106,8 +107,17 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wroclawskiewalentynki.wsgi.application'
 ASGI_APPLICATION = 'wroclawskiewalentynki.asgi.application'
+
+MAIN_CHANNEL_HOST = ("127.0.0.1", 6379)
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [MAIN_CHANNEL_HOST],
+        },
+    },
+}
 
 LOGIN_REDIRECT_URL = '/chat/'
 LOGOUT_REDIRECT_URL = '/'
@@ -172,8 +182,10 @@ LOCALE_PATHS = [
 
 # Where collectstatic collects static (for production)
 
-STATIC_ROOT = 'staticfiles/'
+STATIC_ROOT = BASE_DIR / 'staticfiles/'
 MEDIA_ROOT = 'mediafiles/'
+
+MAX_MESSAGE_LENGTH = 4096
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
