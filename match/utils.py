@@ -60,7 +60,6 @@ def add_profile_based_sheet(workbook, title, queryset, bold):
             userprofile.tiktok,
             "YES" if userprofile.accept_terms else "NIE",
         )
-        print( Q13.choices[list(zip(*Q13.choices))[0].index(userprofile.question13)],)
         sheet.write_row(index + 1, 0, data)
 
 def export_user_related_database_as_xlsx():
