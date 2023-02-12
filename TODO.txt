@@ -6,3 +6,14 @@ DONE Create view for UserProfileCreate Form
 (A) Dodać pole "akceptuję regulamin"
 
 (I) Dodać możliwość dodawania zdjęcia do profilu
+
+
+
+
+TODO
+DONE 1) feature: scroll to bottom dzbanie
+DONE 2) wyświetlać imiona
+DONE 3) zablokować dostęp do czatu
+DONE 4) zmienić margin
+
+

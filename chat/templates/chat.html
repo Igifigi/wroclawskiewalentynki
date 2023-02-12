@@ -1,0 +1,49 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}
+{% trans "Chat with" %} {{ other_user_full_name }}
+{% endblock title %}
+
+{% block caption %}
+<h1 class="hi">{% trans "Hi!" %}</h1>
+{% blocktrans %}
+<p>Welcome to your chat with {{ other_user_full_name }}!</p>
+{% endblocktrans %}
+{% endblock caption %}
+
+{% block content %}
+
+<section>
+    <div id="chat-body" class="chat-body">
+        {% for message in chat_messages %}
+        <blockquote {% if message.sender == request.user %} answer {% endif %}>
+            <strong>{{ message.sender.first_name }} {{ message.sender.last_name }}</strong> {% trans "says" %}:
+            <hr/>
+            {{ message }}
+        </blockquote>
+        {% endfor %}
+    </div>
+    
+    <fieldset>
+        <legend>{% trans "Type a message..." %}</legend>
+        <input name="respond" type="text" id="message-input">
+        <input class="sep" id="send-message-button" type="submit" value="{% trans "Send" %}">
+        
+    </fieldset>
+    {% endblock content %}
+    
+{% block footer %}
+{% trans "says" as says_trans %}
+{{ other_user.id|json_script:"json-other-user-id" }}
+{{ my_user.username|json_script:"json-my-username"}}
+{{ my_user_full_name|json_script:"my-user-full-name"  }}
+{{ says_trans|json_script:"json-says-trans" }}
+{{ cant_send|json_script:"json-cant-send" }}
+{% endblock footer %}
+
+{% block script %}
+<script src={% static 'chat.js' %}></script>
+{% endblock script %}
+

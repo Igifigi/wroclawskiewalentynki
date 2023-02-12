@@ -1,0 +1,9 @@
+﻿{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Chat" %}{% endblock title %}
+
+{% block caption %}
+<h1 class="hi">{% trans "Hi!" %}</h1>
+{% trans "Unfortunately you don't have access to any chat." %}
+{% endblock caption %}
