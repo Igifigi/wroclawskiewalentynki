@@ -29,7 +29,10 @@
     <fieldset>
         <legend>{% trans "Type a message..." %}</legend>
         <input name="respond" type="text" id="message-input">
-        <input class="sep" id="send-message-button" type="submit" value="{% trans "Send" %}">
+        <div>
+            <input class="sep" id="send-message-button" type="submit" value="{% trans "Send" %}" >
+            <a href="{% url 'report_chat' thread_name %}" style="float: right;line-height: 35px;">{% trans "Report chat" %}</a>
+        </div>
         
     </fieldset>
     {% endblock content %}

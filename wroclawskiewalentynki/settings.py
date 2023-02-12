@@ -30,6 +30,7 @@ To run app:
 * 'NOREPLY_EMAIL' - email that will send noreply messages,
 * 'WWW_SITE' - site that will be displayed in every noreply message with confirmation.
 * 'MAIN_CHANNEL_HOST' - redis server IP and PORT [tuple (ip, port)], default is ('127.0.0.1', 6379)
+* 'ADMINS' - list of admin e-mail addresses tuples (name, email) 
 """
 
 
