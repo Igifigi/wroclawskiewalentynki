@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.core.exceptions import PermissionDenied
+from django.contrib import messages
+from django.utils.translation import gettext as _
+from django.core.mail import mail_admins
 
 from match.models import Match
 from .models import Thread, ChatMessage
@@ -40,5 +43,20 @@ def chat(request, thread_name):
         'other_user': other_user,
         'other_user_full_name': f'{other_user.first_name} {other_user.last_name}',
         'cant_send': cant_send,
+        'thread_name': thread.name,
     }
     return render(request, 'chat.html', context=context)
+
+@login_required
+def report_chat(request, thread_name):
+    thread = get_object_or_404(Thread, name=thread_name)
+    
+    if not request.user in thread.allowed_users.all() and not request.user.is_superuser:
+        messages.info(request, _('You cannot report this chat.'))
+    else:
+        mail_admins(
+            _('Chat report'),
+            _('Thread %s was reported by user %s. Check what happened!') % (thread_name, request.user)
+        )
+        messages.info(request, _('This chat was reported.'))
+    return redirect('chat')
