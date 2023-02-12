@@ -45,9 +45,10 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, _("You are now logged in as %s.") % username)
-                if request.user.profile.matched:
-                    return redirect('chat')
-                else:
+                try:
+                    if request.user.profile.matched:
+                        return redirect('chat')
+                except:
                     return redirect('create_profile')
         for error in form.errors.values():
             messages.error(request, error)
