@@ -69,8 +69,7 @@ def show_terms(request):
 def show_privacy_policy(request):
     return render(request, 'privacy_policy.html')
 
-def validate_email(request, uidb64, token):
-    print(uidb64, token)    
+def validate_email(request, uidb64, token): 
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
