@@ -10,6 +10,7 @@ from django.utils.encoding import force_str
 
 from .forms import NewUserForm
 from .utils import send_confirmation_mail
+from match.models import UserProfile
 
 def index(request):
     return render(request, 'index.html')
@@ -44,7 +45,10 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, _("You are now logged in as %s.") % username)
-                return redirect('create_profile')
+                if request.user.profile.matched:
+                    return redirect('chat')
+                else:
+                    return redirect('create_profile')
         for error in form.errors.values():
             messages.error(request, error)
     form = AuthenticationForm()
