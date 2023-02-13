@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from xlsxwriter.workbook import Workbook
 
-from .models import UserProfile, School
+from .models import UserProfile, School, Match
 from .match_settings import *
 
 def add_user_based_sheet(workbook, title, queryset, bold):
@@ -62,6 +62,23 @@ def add_profile_based_sheet(workbook, title, queryset, bold):
         )
         sheet.write_row(index + 1, 0, data)
 
+def add_match_based_sheet(workbook, title, queryset, bold):
+    sheet = workbook.add_worksheet(f'(MATCH) {title}')
+    sheet.write_row(0, 0, ['id', 'user1_username', 'user2_username', 'thread_name', 'exact'])
+    sheet.set_row(0, None, bold)
+    sheet.set_column(0,0,5)
+    sheet.set_column(1,3,15)
+
+    for index, match in enumerate(queryset):
+        data = (
+            match.id,
+            match.user1.user.username,
+            match.user2.user.username,
+            match.thread_name,
+            'YES' if match.exact else 'NO'
+        )
+        sheet.write_row(index + 1, 0, data)
+
 def export_user_related_database_as_xlsx():
     output = BytesIO()
     book = Workbook(output, {})
@@ -71,6 +88,7 @@ def export_user_related_database_as_xlsx():
     add_profile_based_sheet(book, 'matched users', UserProfile.objects.filter(matched=True).exclude(user__is_superuser=True), bold)
     add_profile_based_sheet(book, 'non-matched users', UserProfile.objects.filter(matched=False).exclude(user__is_superuser=True), bold)
     add_user_based_sheet(book, 'users without profile', User.objects.filter(profile=None).exclude(is_superuser=True), bold)
+    add_match_based_sheet(book, 'matches', Match.objects.all())
     
     book.close()
     output.seek(0)
