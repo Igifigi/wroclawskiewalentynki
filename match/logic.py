@@ -9,9 +9,10 @@ from django.db.models import Q
 from .models import UserProfile, Match
 from .match_settings import *
 
+
 def common_parameters_count(user1, user2):
     common = 0
-    
+
     t1 = (user1.question1, user2.question1)
     t2 = tuple(reversed(t1))
     common += t1 in Q1_matches or t2 in Q1_matches
@@ -34,14 +35,33 @@ def common_parameters_count(user1, user2):
     t1 = (user1.question13, user2.question13)
     t2 = tuple(reversed(t1))
     common += t1 in Q13_matches or t2 in Q13_matches
-    
+
     return common
 
+
+def get_the_chosen_one(profile, matches, exact):
+    matches = list(matches)
+    answer = list(
+        zip(matches, [common_parameters_count(profile, user) for user in matches]))
+
+    if answer:
+        result = max(answer, key=lambda t: t[1])
+        m = Match(user1=profile, user2=result[0], exact=exact)
+        profile.matched = True
+        result[0].matched = True
+
+        profile.save()
+        result[0].save()
+        m.save()
+
+
 def make_matches():
-    userprofiles = list(UserProfile.objects.all().exclude(matched=True))
-    
-    for u in userprofiles:
-        
+
+    # First stage
+    ups = UserProfile.objects.filter(matched=False)
+    for u in ups:
+        if UserProfile.objects.get(pk=u.pk).matched:
+            continue
         matched = UserProfile.objects.filter(
             Q(matched=u.matched) &
             ~Q(school=u.school) &
@@ -52,20 +72,27 @@ def make_matches():
             matched = matched.filter(
                 Q(question2=u.question3)
             )
-        
-        matched = list(matched)
-        answer = list(zip(matched, [common_parameters_count(u, user) for user in matched]))
-        
-        if answer:
-            result = min(answer, key = lambda t: t[1])
-            m = Match(user1=u, user2=result[0])
-            u.matched = True
-            result[0].matched = True
-            
-            u.save()
-            result[0].save()
-            m.save()
-            
-            userprofiles.remove(u)
-            userprofiles.remove(result[0])
-    
+        get_the_chosen_one(u, matched, True)
+
+    # Second stage
+    ups = UserProfile.objects.filter(matched=False)
+    for u in ups:
+        if UserProfile.objects.get(pk=u.pk).matched or not u.question4 == Q4.INTERESTING:
+            continue
+        matched = UserProfile.objects.filter(
+            Q(matched=u.matched) &
+            ~Q(school=u.school) &
+            Q(question4=u.question4)
+        )
+        get_the_chosen_one(u, matched, False)
+
+    # Third stage
+    ups = UserProfile.objects.filter(matched=False)
+    for u in ups:
+        if UserProfile.objects.get(pk=u.pk):
+            continue
+        matched = UserProfile.objects.filter(
+            Q(matched=u.matched) &
+            Q(question4=u.question4)
+        )
+        get_the_chosen_one(u, matched, False)
