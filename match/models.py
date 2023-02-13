@@ -55,7 +55,7 @@ class Match(models.Model):
     matched_thread = models.ForeignKey(Thread, on_delete=models.DO_NOTHING, null=True, blank=True)
     
     def __str__(self):
-        return f'[{self.user1.username}] {self.user1.first_name} {self.user1.last_name} - [{self.user2.username}] {self.user2.first_name} {self.user2.last_name}'
+        return f'[{self.user1.user.username}] {self.user1.user.first_name} {self.user1.user.last_name} - [{self.user2.user.username}] {self.user2.user.first_name} {self.user2.user.last_name}'
     
     class Meta:
         unique_together = ('user1', 'user2')
