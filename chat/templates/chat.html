@@ -30,8 +30,8 @@
         <legend>{% trans "Type a message..." %}</legend>
         <input name="respond" type="text" id="message-input">
         <div>
-            <input class="sep" id="send-message-button" type="submit" value="{% trans "Send" %}" >
-            <a href="{% url 'report_chat' thread_name %}" style="float: right;line-height: 35px;">{% trans "Report chat" %}</a>
+            <a href="{% url 'report_chat' thread_name %}">{% trans "Report chat" %}</a>
+            <input class="sep" id="send-message-button" type="submit" value="{% trans "Send" %}" style="float: right;line-height: 35px;">
         </div>
         
     </fieldset>
