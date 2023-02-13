@@ -2,7 +2,12 @@
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from xlsxwriter.workbook import Workbook
+from django.core.mail import send_mail
+from django.db.models import Q
+from django.conf import settings
+from django.template.loader import render_to_string
 
+from core.plain_mails import exact_match_message, not_exact_match_message, not_match_message 
 from chat.models import Thread
 from chat.utils import get_thread_name
 from .models import UserProfile, School, Match
@@ -97,7 +102,7 @@ def export_user_related_database_as_xlsx():
     
     return output
 
-def create_and_assign_thread():
+def create_and_assign_threads():
     matches = Match.objects.all()
     for match in matches:
         thread = Thread(name=get_thread_name(match.user1.user.pk, match.user2.user.pk))
@@ -107,3 +112,60 @@ def create_and_assign_thread():
         thread.save()
         match.matched_thread = thread
         match.save()
+
+def send_match_mail(userprofile):
+    try:
+        match = Match.objects.get(Q(user1=userprofile) | Q(user2=userprofile))
+    except:
+        match = None
+    
+    if match == None:
+        plaintext_message = not_match_message()
+        html_message = render_to_string(
+            'emails/match.html',
+            {
+                'title': plaintext_message['subject'],
+                'header': plaintext_message['message'],
+            }
+        )
+        send_mail(
+            plaintext_message['subject'],
+            plaintext_message['message'],
+            settings.NOREPLY_EMAIL,
+            [userprofile.user.email],
+            html_message=html_message
+        )  
+    elif match.exact:
+        plaintext_message = exact_match_message()
+        html_message = render_to_string(
+            'emails/match.html',
+            {
+                'title': plaintext_message['subject'],
+                'header': plaintext_message['message'],
+                'url': f'{settings.WWW_SITE}/chat',
+            }
+        )
+        send_mail(
+            plaintext_message['subject'],
+            plaintext_message['message'],
+            settings.NOREPLY_EMAIL,
+            [userprofile.user.email],
+            html_message=html_message
+        )
+    elif not match.exact:
+        plaintext_message = not_exact_match_message()
+        html_message = render_to_string(
+            'emails/match.html',
+            {
+                'title': plaintext_message['subject'],
+                'header': plaintext_message['message'],
+                'url': f'{settings.WWW_SITE}/chat',
+            }
+        )
+        send_mail(
+            plaintext_message['subject'],
+            plaintext_message['message'],
+            settings.NOREPLY_EMAIL,
+            [userprofile.user.email],
+            html_message=html_message
+        )
