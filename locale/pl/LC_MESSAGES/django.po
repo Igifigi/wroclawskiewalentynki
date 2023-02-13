@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-13 11:51+0100\n"
+"POT-Creation-Date: 2023-02-13 22:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,6 @@ msgid "You can't assign more than 2 users."
 msgstr "Nie możesz przypisać więcej niż 2 użytkowników."
 
 #: .\chat\templates\chat.html:6
-#| msgid "Chat"
 msgid "Chat with"
 msgstr "Czat z"
 
@@ -40,10 +39,13 @@ msgstr "Cześć!"
 
 #: .\chat\templates\chat.html:11
 #, python-format
+#| msgid "<p>Welcome to your chat with %(other_user_full_name)s!</p>\n"
 msgid ""
 "\n"
 "<p>Welcome to your chat with %(other_user_full_name)s!</p>\n"
 msgstr ""
+"\n"
+"<p>Witaj na czacie z użytkownikiem %(other_user_full_name)s!</p>\n"
 
 #: .\chat\templates\chat.html:22 .\chat\templates\chat.html:41
 msgid "says"
@@ -54,13 +56,12 @@ msgid "Type a message..."
 msgstr "Wpisz wiadomość..."
 
 #: .\chat\templates\chat.html:33
-#| msgid "Send mail"
-msgid "Send"
-msgstr "Wyślij"
-
-#: .\chat\templates\chat.html:34
 msgid "Report chat"
 msgstr "Zgłoś czat"
+
+#: .\chat\templates\chat.html:34
+msgid "Send"
+msgstr "Wyślij"
 
 #: .\chat\templates\redirect_to_chat.html:4 .\core\templates\base.html:76
 msgid "Chat"
@@ -142,6 +143,43 @@ msgstr ""
 "serwisie wroclawskiewalentynki.pl. Prosimy o skopiowanie i wklejenie "
 "poniższego adresu URL do przeglądarki internetowej. "
 
+#: .\core\plain_mails.py:36 .\core\plain_mails.py:44
+msgid "Your match is waiting!"
+msgstr "Twoj match już czeka!"
+
+#: .\core\plain_mails.py:38
+msgid ""
+"We managed to find the perfect match based on your answers on the Wroclaw "
+"Valentine's Day 2023 form. May the force be with you! "
+msgstr ""
+"Udało się nam znaleźć idealne dopasowanie na podstawie Twoich odpowiedzi z "
+"formularza Wrocławskich Walentynek 2023. Niech moc będzie z Tobą!"
+
+#: .\core\plain_mails.py:46
+msgid ""
+"We were able to find a great match for you based on your answers on the "
+"Wroclaw Valentine's Day 2023 form. Unfortunately, not all preferences "
+"specified in it could be met. Maybe that was destiny? See for yourself! "
+msgstr ""
+"Udało nam się znaleźć dla świetne dopasowanie na podstawie Twoich odpowiedzi "
+"z formularza Wrocławskich Walentynek 2023. Niestety nie wszystkie określone "
+"w nim preferencje mogły zostać spełnione. Może takie było przeznaczenie? "
+"Przekonaj się!"
+
+#: .\core\plain_mails.py:53
+msgid "Thank you for participation!"
+msgstr "Dziękujemy, że bierzesz udział w akcji!"
+
+#: .\core\plain_mails.py:55
+msgid ""
+"Unfortunately, we were unable to find a suitable match for you based on your "
+"answers from the Wroclaw Valentine's Day 2023 form. We apologize and thank "
+"you for participating in the action. "
+msgstr ""
+"Niestety nie udało nam się naleźć odpowiedniego dla Ciebie dopasowania na "
+"podstawie Twoich odpowiedzi z formularza Wrocławskich Walentynek 2023."
+"Przepraszamy i dziękujemy za udział w akcji. "
+
 #: .\core\templates\404.html:11
 msgid "Page not found"
 msgstr "Strona nie została znaleziona"
@@ -201,22 +239,28 @@ msgid "Thank you for coming back to us. Fill out the form to proceed."
 msgstr "Dziękujemy, że do nas wracasz. Wypełnij formularz, aby kontynuować."
 
 #: .\core\templates\emails\base_email.html:52
+#: .\core\templates\emails\base_match_email.html:52
 msgid "Hello!"
 msgstr "Cześć!"
 
 #: .\core\templates\emails\base_email.html:59
 msgid ""
+"\n"
 "\tIf you did not issue the instruction, write an e-mail to <a href=\"mailto:"
 "kontakt@wroclawskiewalentynki.pl\">kontakt@wroclawskiewalentynki.pl</a>."
 "<br>\n"
 "\tThank you for being part of our community.\n"
+"\t"
 msgstr ""
+"\n"
 "\tJeśli to nie Ty wydałeś/aś dyspozycję, napisz proszę maila na adres <a "
 "href=\"mailto:kontakt@wroclawskiewalentynki.pl"
 "\">kontakt@wroclawskiewalentynki.pl</a>.<br>\n"
 "\tDziękujemy, że należysz do naszej społeczności.\n"
+"\t"
 
 #: .\core\templates\emails\base_email.html:68
+#: .\core\templates\emails\base_match_email.html:63
 msgid ""
 "\n"
 "\t\tRegards,<br>\n"
@@ -229,17 +273,15 @@ msgstr ""
 "\t\t"
 
 #: .\core\templates\emails\base_email.html:74
+#: .\core\templates\emails\base_match_email.html:69
 msgid "Message generated automatically. Please do not reply to it."
 msgstr "Wiadomość wygenerowana automatycznie. Prosimy na nią nie odpowiadać."
 
-#: .\core\templates\emails\password_reset.html:9
-msgid ""
-"You have received this message because an instruction to change the password "
-"from your account at wroclawskiewalentynki.pl has been issued."
-msgstr ""
-"Otrzymałeś/aś tę wiadomość, ponieważ wydano dyspozycję resetu hasła w "
-"serwisie wroclawskiewalentynki.pl."
+#: .\core\templates\emails\match.html:15
+msgid "Check who we matched"
+msgstr "Sprawdź, kogo dopasowaliśmy"
 
+#: .\core\templates\emails\match.html:17
 #: .\core\templates\emails\password_reset.html:16
 #: .\core\templates\emails\validate.html:16
 msgid ""
@@ -248,6 +290,14 @@ msgid ""
 msgstr ""
 "Jeżeli powyższy przycisk nie działa, prosimy o skopiowanie i wklejenie "
 "poniższego adresu URL do przeglądarki internetowej:"
+
+#: .\core\templates\emails\password_reset.html:9
+msgid ""
+"You have received this message because an instruction to change the password "
+"from your account at wroclawskiewalentynki.pl has been issued."
+msgstr ""
+"Otrzymałeś/aś tę wiadomość, ponieważ wydano dyspozycję resetu hasła w "
+"serwisie wroclawskiewalentynki.pl."
 
 #: .\core\templates\emails\validate.html:5
 msgid "Confirm e-mail address"
@@ -363,7 +413,7 @@ msgstr "Aktywacja konta przebiegła pomyślnie. Teraz możesz się zalogować."
 msgid "Activation link is invalid!"
 msgstr "Link aktywacyjny jest błędny."
 
-#: .\match\admin.py:10 .\match\models.py:29
+#: .\match\admin.py:8 .\match\models.py:29
 msgid "School code"
 msgstr "Kod szkoły"
 
@@ -609,19 +659,44 @@ msgstr "Link do profilu na TikToku (nieobowiązkowe)"
 msgid "Terms of use and privacy policy."
 msgstr "Akceptuję Regulamin oraz Politykę prywatności."
 
-#: .\match\templates\match_result.html:4 .\match\templates\match_result.html:9
+#: .\match\templates\flexible_site.html:9 .\match\templates\match_result.html:9
+msgid "Administrator options:"
+msgstr "Opcje administratorskie:"
+
+#: .\match\templates\match_result.html:4
 msgid "Match result"
 msgstr "Wyniki procedury dopasowywania użytkowników"
 
+#: .\match\templates\match_result.html:7 .\match\views.py:70
+#: .\match\views.py:81
+msgid "Hello admin!"
+msgstr "Witaj administratorze!"
+
+#: .\match\templates\match_result.html:8
+msgid "Match result are below."
+msgstr "Wyniki procedury dopasowywania użytkowników są poniżej."
+
 #: .\match\templates\match_result.html:10
+msgid "Export database"
+msgstr "Eksportuj bazę danych (.xlsx)"
+
+#: .\match\templates\match_result.html:11
+msgid "Create and assign threads"
+msgstr "Utwórz i dopasuj wątki"
+
+#: .\match\templates\match_result.html:12
+msgid "Send mails"
+msgstr "Wyślij maile"
+
+#: .\match\templates\match_result.html:18
 msgid "Matched users"
 msgstr "Użytkownicy dopasowani"
 
-#: .\match\templates\match_result.html:16
+#: .\match\templates\match_result.html:24
 msgid "Non-matched users"
 msgstr "Użytkownicy niedopasowani"
 
-#: .\match\templates\match_result.html:22
+#: .\match\templates\match_result.html:30
 msgid "Users without profile"
 msgstr "Użytkownicy bez profilu"
 
@@ -700,17 +775,25 @@ msgstr ""
 "chwilę zająć (zależy od ilości użytkowników). Pamiętaj, by zrobić kopię "
 "zapasową bazy danych przed procedowaniem dalej!"
 
-#: .\match\views.py:75
+#: .\match\views.py:76
 msgid "Matching, please wait"
 msgstr "Dopasowywanie, proszę czekać"
 
-#: .\match\views.py:76
+#: .\match\views.py:77
 msgid "Matching process has started. Please wait a while."
 msgstr "Proces dopasowywania się rozpoczął. Proszę chwilę poczekać."
 
-#: .\match\views.py:77
+#: .\match\views.py:78
 msgid "Go to result"
 msgstr "Idź do wyników"
+
+#: .\match\views.py:104
+msgid "Threads have been created and assigned."
+msgstr "Wątki zostały utworzone i przypisane."
+
+#: .\match\views.py:121
+msgid "Mails have been sent."
+msgstr "Maile zostały wysłane."
 
 #, python-format
 #~ msgid ""

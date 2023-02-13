@@ -1,0 +1,24 @@
+﻿{% extends 'emails/base_match_email.html' %}
+{% load i18n %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block caption %}
+<h1>{{ header }}</h1>
+{% endblock caption %}
+
+{% block content %}
+{% if url %}
+<a href="{{ url }}" class="button">
+    {% trans "Check who we matched" %}
+</a><br>
+{% trans "If the button above does not work, please copy and paste the following URL into your web browser:" %}
+<div class="link">
+    <code>
+        {{ url }}
+    </code>
+</div>
+{% endif %}
+{% endblock content %}

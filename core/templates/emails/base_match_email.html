@@ -1,0 +1,71 @@
+﻿{% load i18n %}
+<!doctype html lang="{% get_current_language as lang %}{{ lang }}">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}{% endblock title %}</title>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap');
+	html, body {
+		font-family: 'Albert Sans', sans-serif;
+		max-width: 580px;
+		margin: auto;
+	}
+	hr {
+		color: grey;
+	}	
+	h2 {
+		color: #6c6a6a;
+		font-weight: 600;
+	}
+	h1 {
+		font-weight: 600;
+	}
+	.sign {
+		padding-top: 1.5em;
+	}
+	
+	.button {
+		background-color: #5957FF;
+  		border: none;
+  		color: white;
+  		padding: 1em 1.5em 1em;
+  		text-align: center;
+ 		text-decoration: none;
+ 		display: inline-block;
+  		font-size: 16px;
+		margin-bottom: 1em;
+		border-radius: 5em;
+		font-weight: 600;
+		align-content: center;
+	}
+	a {
+		style: none;
+		text-decoration: none;
+	}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+	<h2>{% trans "Hello!" %}</h2>
+	{% block caption %}
+	{% endblock caption %}
+	
+	{% block content %}
+    {% endblock content %}
+
+	{% block footer %}
+	{% endblock footer %}
+
+	<div class="sign">
+		{% blocktrans %}
+		Regards,<br>
+		Team of Wroclaw Valentine's Day 2023
+		{% endblocktrans %}
+	</div>
+	<hr>
+	{% trans "Message generated automatically. Please do not reply to it." %}
+</body>
+</html>

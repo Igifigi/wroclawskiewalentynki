@@ -30,3 +30,29 @@ def reset_password_message(uid, token):
             'Message generated automatically. Please do not reply to it.'
         )
     }
+
+def exact_match_message():
+    return {
+        'subject': _('Your match is waiting!'),
+        'message': _(
+            'We managed to find the perfect match based on your answers on the Wroclaw Valentine\'s Day 2023 form. May the force be with you! '
+        )
+    }
+
+def not_exact_match_message():
+    return {
+        'subject': _('Your match is waiting!'),
+        'message': _(
+            'We were able to find a great match for you based on your answers on the Wroclaw Valentine\'s Day 2023 form. ' +
+            'Unfortunately, not all preferences specified in it could be met. Maybe that was destiny? See for yourself! '
+        )
+    }
+
+def not_match_message():
+    return {
+        'subject': _('Thank you for participation!'),
+        'message': _(
+            'Unfortunately, we were unable to find a suitable match for you based on your answers from the Wroclaw Valentine\'s Day 2023 form. ' +
+            'We apologize and thank you for participating in the action. '
+        )
+    }
