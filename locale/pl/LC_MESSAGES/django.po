@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-11 11:30+0100\n"
+"POT-Creation-Date: 2023-02-13 11:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,73 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: .\chat\models.py:14
+msgid "You can't assign more than 2 users."
+msgstr "Nie możesz przypisać więcej niż 2 użytkowników."
+
+#: .\chat\templates\chat.html:6
+#| msgid "Chat"
+msgid "Chat with"
+msgstr "Czat z"
+
+#: .\chat\templates\chat.html:10 .\chat\templates\redirect_to_chat.html:7
+#: .\core\templates\base_form.html:5
+#: .\core\templates\flexible_login_form.html:8 .\core\templates\index.html:7
+#: .\core\templates\password_reset.html:8
+#: .\core\templates\password_reset_confirm.html:8
+#: .\core\templates\privacy_policy.html:7 .\core\templates\terms.html:7
+msgid "Hi!"
+msgstr "Cześć!"
+
+#: .\chat\templates\chat.html:11
+#, python-format
+msgid ""
+"\n"
+"<p>Welcome to your chat with %(other_user_full_name)s!</p>\n"
+msgstr ""
+
+#: .\chat\templates\chat.html:22 .\chat\templates\chat.html:41
+msgid "says"
+msgstr "pisze"
+
+#: .\chat\templates\chat.html:30
+msgid "Type a message..."
+msgstr "Wpisz wiadomość..."
+
+#: .\chat\templates\chat.html:33
+#| msgid "Send mail"
+msgid "Send"
+msgstr "Wyślij"
+
+#: .\chat\templates\chat.html:34
+msgid "Report chat"
+msgstr "Zgłoś czat"
+
+#: .\chat\templates\redirect_to_chat.html:4 .\core\templates\base.html:76
+msgid "Chat"
+msgstr "Czat"
+
+#: .\chat\templates\redirect_to_chat.html:8
+msgid "Unfortunately you don't have access to any chat."
+msgstr "Niestety nie masz dostępu do żadnego czatu."
+
+#: .\chat\views.py:55
+msgid "You cannot report this chat."
+msgstr "Nie możesz zgłosić tego czatu."
+
+#: .\chat\views.py:58
+msgid "Chat report"
+msgstr "Zgłoszenie czatu"
+
+#: .\chat\views.py:59
+#, python-format
+msgid "Thread %s was reported by user %s. Check what happened!"
+msgstr "Wątek %s został zgłoszony przez użytkownika %s. Sprawdź, co się stało!"
+
+#: .\chat\views.py:61
+msgid "This chat was reported."
+msgstr "Czat został zgłoszony."
 
 #: .\core\forms.py:8
 msgid "First name"
@@ -61,7 +128,6 @@ msgstr ""
 
 #: .\core\plain_mails.py:21 .\core\templates\emails\password_reset.html:5
 #: .\core\templates\emails\password_reset.html:14
-#| msgid "Repeat password"
 msgid "Reset your password"
 msgstr "Zresetuj swoje hasło"
 
@@ -72,8 +138,8 @@ msgid ""
 "Please copy and paste the following URL into your web browser to verify your "
 "e-mail address: "
 msgstr ""
-"Cześć! Otrzymałeś/aś tę wiadomość, ponieważ wydano dyspozycję resetu "
-"hasła w serwisie wroclawskiewalentynki.pl. Prosimy o skopiowanie i wklejenie "
+"Cześć! Otrzymałeś/aś tę wiadomość, ponieważ wydano dyspozycję resetu hasła w "
+"serwisie wroclawskiewalentynki.pl. Prosimy o skopiowanie i wklejenie "
 "poniższego adresu URL do przeglądarki internetowej. "
 
 #: .\core\templates\404.html:11
@@ -84,49 +150,41 @@ msgstr "Strona nie została znaleziona"
 msgid "Server error"
 msgstr "Wystąpił błąd serwera"
 
-#: .\core\templates\base.html:66
+#: .\core\templates\base.html:74
 msgid "Log out"
 msgstr "Wyloguj się"
 
-#: .\core\templates\base.html:67
+#: .\core\templates\base.html:75
 msgid "Fill out the form"
 msgstr "Wypełnij formularz"
 
-#: .\core\templates\base.html:69 .\core\views.py:52
+#: .\core\templates\base.html:78 .\core\views.py:57
 msgid "Log in"
 msgstr "Zaloguj się"
 
-#: .\core\templates\base.html:70 .\core\views.py:32
+#: .\core\templates\base.html:79 .\core\views.py:33
 msgid "Sign up"
 msgstr "Zarejestruj się"
 
-#: .\core\templates\base.html:91 .\core\templates\base_error.html:56
+#: .\core\templates\base.html:100 .\core\templates\base_error.html:56
 msgid "Visit the main site"
 msgstr "Odwiedź stronę główną"
 
-#: .\core\templates\base.html:92
+#: .\core\templates\base.html:101
 msgid "Contact"
 msgstr "Kontakt"
 
-#: .\core\templates\base.html:93 .\core\templates\terms.html:4
+#: .\core\templates\base.html:102 .\core\templates\terms.html:4
 msgid "Terms of use"
 msgstr "Regulamin"
 
-#: .\core\templates\base.html:94 .\core\templates\privacy_policy.html:4
+#: .\core\templates\base.html:103 .\core\templates\privacy_policy.html:4
 msgid "Privacy policy"
 msgstr "Polityka prywatności"
 
-#: .\core\templates\base.html:98
+#: .\core\templates\base.html:107
 msgid "Project carried out as part of Zwolonieni z Teorii"
 msgstr "Projekt realizowany w ramach Zwolnionych z Teorii"
-
-#: .\core\templates\base_form.html:5
-#: .\core\templates\flexible_login_form.html:8 .\core\templates\index.html:7
-#: .\core\templates\password_reset.html:8
-#: .\core\templates\password_reset_confirm.html:8
-#: .\core\templates\privacy_policy.html:7 .\core\templates\terms.html:7
-msgid "Hi!"
-msgstr "Cześć!"
 
 #: .\core\templates\base_form.html:7
 #: .\core\templates\flexible_login_form.html:10 .\core\templates\index.html:9
@@ -153,9 +211,9 @@ msgid ""
 "<br>\n"
 "\tThank you for being part of our community.\n"
 msgstr ""
-"\tJeśli to nie Ty wydałeś/aś dyspozycję, napisz proszę maila na adres <a href=\"mailto:"
-"kontakt@wroclawskiewalentynki.pl\">kontakt@wroclawskiewalentynki.pl</a>."
-"<br>\n"
+"\tJeśli to nie Ty wydałeś/aś dyspozycję, napisz proszę maila na adres <a "
+"href=\"mailto:kontakt@wroclawskiewalentynki.pl"
+"\">kontakt@wroclawskiewalentynki.pl</a>.<br>\n"
 "\tDziękujemy, że należysz do naszej społeczności.\n"
 
 #: .\core\templates\emails\base_email.html:68
@@ -249,8 +307,8 @@ msgid ""
 "    "
 msgstr ""
 "\n"
-"    Link resetujący hasło jest nieprawidłowy. Prawdopodobnie został już użyty. "
-"<a href=\"%(url)s\">Wygeneruj nowy link</a> lub <a href=\"mailto:"
+"    Link resetujący hasło jest nieprawidłowy. Prawdopodobnie został już "
+"użyty. <a href=\"%(url)s\">Wygeneruj nowy link</a> lub <a href=\"mailto:"
 "admin@wroclawskiewalentynki.pl\">skontaktuj się z administratorem.</a>.\n"
 "    "
 
@@ -263,18 +321,19 @@ msgid "See the document below or use the options listed."
 msgstr ""
 "Zapoznaj się z poniższym dokumentem lub skorzystaj z wymienionych opcji."
 
-#: .\core\urls.py:31
+#: .\core\urls.py:30
 msgid ""
 "If there is an account assigned to the given email address, instructions for "
 "changing the password have been sent."
 msgstr ""
-"Jeśli istnieje konto przypisane do podanego adresu email, została wysłana instrukcja zmiany hasła."
+"Jeśli istnieje konto przypisane do podanego adresu email, została wysłana "
+"instrukcja zmiany hasła."
 
-#: .\core\urls.py:47
+#: .\core\urls.py:46
 msgid "Password changed successfully. You can now log in."
 msgstr "Hasło zmieniono pomyślnie. Możesz teraz się zalogować."
 
-#: .\core\views.py:25
+#: .\core\views.py:26
 #, python-format
 msgid ""
 "Please go to your email %s to verify your account. Remember to check your "
@@ -283,28 +342,28 @@ msgstr ""
 "Odwiedź swój adres %s, by zweryfikować swoje konto. Pamiętaj, aby sprawdzić "
 "folder SPAM."
 
-#: .\core\views.py:30
+#: .\core\views.py:31
 msgid "Please note that you have to validate this email later."
 msgstr "Pamiętaj, że później musisz zweryfikować ten e-mail."
 
-#: .\core\views.py:46
+#: .\core\views.py:47
 #, python-format
 msgid "You are now logged in as %s."
 msgstr "Jesteś teraz zalogowany/a jako %s"
 
-#: .\core\views.py:60
+#: .\core\views.py:65
 msgid "You have successfully logged out."
 msgstr "Wylogowano pomyślnie."
 
-#: .\core\views.py:80
+#: .\core\views.py:84
 msgid "Successfully activated email. You can now login to your account."
 msgstr "Aktywacja konta przebiegła pomyślnie. Teraz możesz się zalogować."
 
-#: .\core\views.py:83
+#: .\core\views.py:87
 msgid "Activation link is invalid!"
 msgstr "Link aktywacyjny jest błędny."
 
-#: .\match\admin.py:10 .\match\models.py:28
+#: .\match\admin.py:10 .\match\models.py:29
 msgid "School code"
 msgstr "Kod szkoły"
 
@@ -460,44 +519,44 @@ msgstr "Biologia/chemia"
 msgid "PE"
 msgstr "WF"
 
-#: .\match\models.py:12
+#: .\match\models.py:13
 msgid "Acceptance of the terms is required."
 msgstr ""
 
-#: .\match\models.py:17
+#: .\match\models.py:18
 #, python-format
 msgid "%(code)s is not valid school code"
 msgstr "%(code)s nie jest poprawnym kodem szkoły"
 
-#: .\match\models.py:20
+#: .\match\models.py:21
 msgid "Name"
 msgstr "Imię"
 
-#: .\match\models.py:21
+#: .\match\models.py:22
 msgid "Code"
 msgstr "Kod"
 
-#: .\match\models.py:30
+#: .\match\models.py:31
 msgid "What class are you in?"
 msgstr "W której klasie jesteś?"
 
-#: .\match\models.py:31
+#: .\match\models.py:32
 msgid "You identify yourself as:"
 msgstr "Identyfikujesz się jako:"
 
-#: .\match\models.py:32
+#: .\match\models.py:33
 msgid "Who would you like to be matched with?"
 msgstr "Do kogo chciałbyś/chciałabyś być dopasowan*?"
 
-#: .\match\models.py:33
+#: .\match\models.py:34
 msgid "I want to meet:"
 msgstr "Chcę się spotkać:"
 
-#: .\match\models.py:34
+#: .\match\models.py:35
 msgid "The ideal date/meeting is:"
 msgstr "Idealna randka/spotkanie to:"
 
-#: .\match\models.py:35
+#: .\match\models.py:36
 msgid ""
 "You have a geo test tomorrow, but you were supposed to meet your friends "
 "today. What do you do?"
@@ -505,48 +564,48 @@ msgstr ""
 "Masz jutro sprawdzian z geografii, ale miał*ś się dziś spotkać ze znajomymi. "
 "Co robisz?"
 
-#: .\match\models.py:36
+#: .\match\models.py:37
 msgid "In free time:"
 msgstr "W wolnym czasie:"
 
-#: .\match\models.py:37
+#: .\match\models.py:38
 msgid "If you had to listen to one musician for the next year, it would be:"
 msgstr ""
 "Jeśli miałbyś/miałabyś słuchać jednego muzyka przez najbliższy rok, byłby to:"
 
-#: .\match\models.py:38
+#: .\match\models.py:39
 msgid "On a scale of 1 to 10, how decisive are you?"
 msgstr "W skali od 1 do 10, jak bardzo decyzyjn* jesteś?"
 
-#: .\match\models.py:39
+#: .\match\models.py:40
 msgid "Dogs or perhaps cats?"
 msgstr "Psy, czy może jednak koty?"
 
-#: .\match\models.py:40
+#: .\match\models.py:41
 msgid "How spontaneous are you?"
 msgstr "Jak bardzo sponataniczn* jesteś?"
 
-#: .\match\models.py:41
+#: .\match\models.py:42
 msgid "Do you avoid serious topics?"
 msgstr "Unikasz poważnych tematów?"
 
-#: .\match\models.py:42
+#: .\match\models.py:43
 msgid "My favorite subject at school is:"
 msgstr "Mój ulubiony przedmiot w szkole to:"
 
-#: .\match\models.py:43
+#: .\match\models.py:44
 msgid "Instagram profile link (non-obligatory)"
 msgstr "Link do profilu na Instagramie (nieobowiązkowe)"
 
-#: .\match\models.py:44
+#: .\match\models.py:45
 msgid "Facebook profile link (non-obligatory)"
 msgstr "Link do profilu na Facebooku (nieobowiązkowe)"
 
-#: .\match\models.py:45
+#: .\match\models.py:46
 msgid "TikTok profile link (non-obligatory)"
 msgstr "Link do profilu na TikToku (nieobowiązkowe)"
 
-#: .\match\models.py:46
+#: .\match\models.py:47
 msgid "Terms of use and privacy policy."
 msgstr "Akceptuję Regulamin oraz Politykę prywatności."
 
@@ -652,9 +711,6 @@ msgstr "Proces dopasowywania się rozpoczął. Proszę chwilę poczekać."
 #: .\match\views.py:77
 msgid "Go to result"
 msgstr "Idź do wyników"
-
-#~ msgid "Chat"
-#~ msgstr "Czat"
 
 #, python-format
 #~ msgid ""
