@@ -28,4 +28,4 @@ class SchoolAdmin(ModelAdmin):
 
 @admin.register(Match)
 class MatchAdmin(ModelAdmin):
-    search_fields = ['user1__user__username', 'user2__user__username', 'matched_thread',]
+    search_fields = ['user1__user.username', 'user2__user.username', 'matched_thread',]
