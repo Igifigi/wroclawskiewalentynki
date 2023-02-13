@@ -4,8 +4,10 @@ const my_user_full_name = JSON.parse(document.getElementById('my-user-full-name'
 const says_translation = JSON.parse(document.getElementById('json-says-trans').textContent);
 const cant_send = JSON.parse(document.getElementById('json-cant-send').textContent);
 
+const scheme = window.location.protocol == "https:" ? "wss" : "ws";
+
 const socket = new WebSocket(
-    `ws://${window.location.host}/ws/${other_user_id}/`
+    `${scheme}://${window.location.host}/ws/${other_user_id}/`
 );
 
 socket.onmessage = function(e){
