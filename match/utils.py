@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from xlsxwriter.workbook import Workbook
 
+from chat.models import Thread
+from chat.utils import get_thread_name
 from .models import UserProfile, School, Match
 from .match_settings import *
 
@@ -94,3 +96,14 @@ def export_user_related_database_as_xlsx():
     output.seek(0)
     
     return output
+
+def create_and_assign_thread():
+    matches = Match.objects.all()
+    for match in matches:
+        thread = Thread(name=get_thread_name(match.user1.user.pk, match.user2.user.pk))
+        thread.save()
+        thread.allowed_users.add(match.user1.user)
+        thread.allowed_users.add(match.user2.user)
+        thread.save()
+        match.matched_thread = thread
+        match.save()
