@@ -53,6 +53,7 @@ class Match(models.Model):
     user1 = models.OneToOneField(UserProfile, related_name='match1_set', on_delete=models.CASCADE)
     user2 = models.OneToOneField(UserProfile, related_name='match2_set', on_delete=models.CASCADE)
     matched_thread = models.ForeignKey(Thread, on_delete=models.DO_NOTHING, null=True, blank=True)
+    exact = models.BooleanField()
     
     def __str__(self):
         return f'[{self.user1.user.username}] {self.user1.user.first_name} {self.user1.user.last_name} - [{self.user2.user.username}] {self.user2.user.first_name} {self.user2.user.last_name}'
