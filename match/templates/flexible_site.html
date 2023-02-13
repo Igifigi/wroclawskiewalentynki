@@ -3,16 +3,12 @@
 
 {% block title %}{{ title }}{% endblock title %}
 
-{% block content %}
-
-<div class="container py-5">
-	<h2>{{ message }}</h2>
-	<button type="button" id="proceed_button" onclick="display_message()">
-        {{ button_label }}
-    </button>
-</div>
-
-{% endblock content %}
+{% block caption %}
+<h1>{{ header }}</h1>
+<p>{{ message }}</p>
+{% trans "Administrator options:" %} 
+<a onclick="display_message()"><button>{{ button_label }}</button></a>
+{% endblock caption %}
 
 {% block script %}
 <script>
