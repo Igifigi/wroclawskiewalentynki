@@ -61,7 +61,7 @@ class Q8(models.IntegerChoices):
     BTS = 10, 'BTS',
     Harry = 11, 'Harry Styles',
     Arctic = 12, 'Arctic Monkeys',
-    PLAYBOI = 13, 'Pleyboi Carti',
+    PLAYBOY = 13, 'Playboi Carti',
 
 # On a scale of 1 to 10, how decisive are you?
 class Q9(models.IntegerChoices):

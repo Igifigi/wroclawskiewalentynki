@@ -3,10 +3,25 @@
 
 {% block title %}{% trans "Match result" %}{% endblock title %}
 
+{% block caption %}
+<h1>{% trans "Hello admin!" %}</h1>
+<p>{% trans "Match result are below." %}</p>
+<p>
+    {% trans "Administrator options:" %}
+    <br>
+    <br>
+    <a href="{% url 'export_database' %}"><button>{% trans "Export database" %}</button></a>
+    <br>
+    <a href="{% url 'create_and_assign_threads' %}"><button>{% trans "Create and assign threads" %}</button></a>
+    <br>
+    <a href="{% url 'send_match_mails' %}"><button>{% trans "Send mails" %}</button></a>
+    <br>
+</p>
+{% endblock caption %}
+
 {% block content %}
 
-<div class="container py-5">
-	<h1>{% trans "Match result" %}</h1>
+<div>
     <h3>{% trans "Matched users" %} ({{ with_match_count }})</h3>
     <div>
         {% for profile in with_match %}

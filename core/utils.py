@@ -11,7 +11,7 @@ def send_confirmation_mail(user):
     
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.pk))
-    plaintext_message = validate_email_message(user.first_name, user.last_name, uid, token)
+    plaintext_message = validate_email_message(uid, token)
     
     context = {
         'url': f'{settings.WWW_SITE}/validate/{uid}/{token}'

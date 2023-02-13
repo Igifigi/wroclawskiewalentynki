@@ -2,8 +2,15 @@
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from xlsxwriter.workbook import Workbook
+from django.core.mail import send_mail
+from django.db.models import Q
+from django.conf import settings
+from django.template.loader import render_to_string
 
-from .models import UserProfile, School
+from core.plain_mails import exact_match_message, not_exact_match_message, not_match_message 
+from chat.models import Thread
+from chat.utils import get_thread_name
+from .models import UserProfile, School, Match
 from .match_settings import *
 
 def add_user_based_sheet(workbook, title, queryset, bold):
@@ -60,7 +67,23 @@ def add_profile_based_sheet(workbook, title, queryset, bold):
             userprofile.tiktok,
             "YES" if userprofile.accept_terms else "NIE",
         )
-        print( Q13.choices[list(zip(*Q13.choices))[0].index(userprofile.question13)],)
+        sheet.write_row(index + 1, 0, data)
+
+def add_match_based_sheet(workbook, title, queryset, bold):
+    sheet = workbook.add_worksheet(f'(MATCH) {title}')
+    sheet.write_row(0, 0, ['id', 'user1_username', 'user2_username', 'thread_name', 'exact'])
+    sheet.set_row(0, None, bold)
+    sheet.set_column(0,0,5)
+    sheet.set_column(1,3,15)
+
+    for index, match in enumerate(queryset):
+        data = (
+            match.id,
+            match.user1.user.username,
+            match.user2.user.username,
+            match.thread_name,
+            'YES' if match.exact else 'NO'
+        )
         sheet.write_row(index + 1, 0, data)
 
 def export_user_related_database_as_xlsx():
@@ -72,8 +95,77 @@ def export_user_related_database_as_xlsx():
     add_profile_based_sheet(book, 'matched users', UserProfile.objects.filter(matched=True).exclude(user__is_superuser=True), bold)
     add_profile_based_sheet(book, 'non-matched users', UserProfile.objects.filter(matched=False).exclude(user__is_superuser=True), bold)
     add_user_based_sheet(book, 'users without profile', User.objects.filter(profile=None).exclude(is_superuser=True), bold)
+    add_match_based_sheet(book, 'matches', Match.objects.all())
     
     book.close()
     output.seek(0)
     
     return output
+
+def create_and_assign_threads():
+    matches = Match.objects.all()
+    for match in matches:
+        thread = Thread(name=get_thread_name(match.user1.user.pk, match.user2.user.pk))
+        thread.save()
+        thread.allowed_users.add(match.user1.user)
+        thread.allowed_users.add(match.user2.user)
+        thread.save()
+        match.matched_thread = thread
+        match.save()
+
+def send_match_mail(userprofile):
+    try:
+        match = Match.objects.get(Q(user1=userprofile) | Q(user2=userprofile))
+    except:
+        match = None
+    
+    if match == None:
+        plaintext_message = not_match_message()
+        html_message = render_to_string(
+            'emails/match.html',
+            {
+                'title': plaintext_message['subject'],
+                'header': plaintext_message['message'],
+            }
+        )
+        send_mail(
+            plaintext_message['subject'],
+            plaintext_message['message'],
+            settings.NOREPLY_EMAIL,
+            [userprofile.user.email],
+            html_message=html_message
+        )  
+    elif match.exact:
+        plaintext_message = exact_match_message()
+        html_message = render_to_string(
+            'emails/match.html',
+            {
+                'title': plaintext_message['subject'],
+                'header': plaintext_message['message'],
+                'url': f'{settings.WWW_SITE}/chat',
+            }
+        )
+        send_mail(
+            plaintext_message['subject'],
+            plaintext_message['message'],
+            settings.NOREPLY_EMAIL,
+            [userprofile.user.email],
+            html_message=html_message
+        )
+    elif not match.exact:
+        plaintext_message = not_exact_match_message()
+        html_message = render_to_string(
+            'emails/match.html',
+            {
+                'title': plaintext_message['subject'],
+                'header': plaintext_message['message'],
+                'url': f'{settings.WWW_SITE}/chat',
+            }
+        )
+        send_mail(
+            plaintext_message['subject'],
+            plaintext_message['message'],
+            settings.NOREPLY_EMAIL,
+            [userprofile.user.email],
+            html_message=html_message
+        )

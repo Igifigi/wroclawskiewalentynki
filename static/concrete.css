@@ -70,7 +70,7 @@ main {
  */
 
 header {
-  padding: 16rem 0; /* 1 */
+  padding: 8rem 0; /* 1 */
   font-size: 1.2em; /* 2 */
 }
 
@@ -261,7 +261,7 @@ td {
 
 blockquote, pre {
   margin-left: 0; /* 1 */
-  margin-right: 0; /* 1 */
+  margin-right: 5; /* 1 */
   padding: 1rem 1.6rem; /* 1 */
   border-left: .2rem solid #111; /* 2 */
   overflow-y: hidden; /* 3 */
@@ -389,6 +389,7 @@ hr {
   td,
   th,
   blockquote,
+  blockquote[answer],
   pre,
   hr {
     border-color: #fff;

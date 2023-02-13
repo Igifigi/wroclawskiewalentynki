@@ -10,6 +10,7 @@ from django.utils.encoding import force_str
 
 from .forms import NewUserForm
 from .utils import send_confirmation_mail
+from match.models import UserProfile
 
 def index(request):
     return render(request, 'index.html')
@@ -44,13 +45,18 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, _("You are now logged in as %s.") % username)
-                return redirect('create_profile')
+                try:
+                    if request.user.profile.matched:
+                        return redirect('chat')
+                except:
+                    return redirect('create_profile')
         for error in form.errors.values():
             messages.error(request, error)
     form = AuthenticationForm()
     context = {
         'caption': _('Log in'),
         'form': form,
+        'forgot_password': True,
     }
     return render(request, template_name='flexible_login_form.html', context=context)
 
@@ -65,8 +71,7 @@ def show_terms(request):
 def show_privacy_policy(request):
     return render(request, 'privacy_policy.html')
 
-def validate_email(request, uidb64, token):
-    print(uidb64, token)    
+def validate_email(request, uidb64, token): 
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
@@ -82,3 +87,7 @@ def validate_email(request, uidb64, token):
         messages.error(request, _('Activation link is invalid!'))
         
     return redirect('index')
+
+def message_and_redirect(request, message, redirect_url):
+    messages.info(request, message)
+    return redirect(redirect_url)

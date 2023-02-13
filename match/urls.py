@@ -1,5 +1,5 @@
 ﻿from django.urls import path
-from .views import *
+from .views import create_profile, edit_profile, start_matching, matching, match_result, export_database, assign_threads, send_match_mails
 
 urlpatterns = [
     path('create_profile/', create_profile, name='create_profile'),
@@ -7,5 +7,7 @@ urlpatterns = [
     path('start_matching', start_matching, name='start_matching'),
     path('matching', matching, name='matching'),
     path('match_result', match_result, name='match_result'),
-    path('export_database', export_database, name='export_database')
+    path('export_database', export_database, name='export_database'),
+    path('create_and_assign_threads', assign_threads, name='create_and_assign_threads'),
+    path('send_match_mails', send_match_mails, name='send_match_mails'),
 ]
