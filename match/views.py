@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from .forms import UserProfileCreateForm, UserProfileEditForm
 from .models import UserProfile
 from .logic import make_matches
-from .utils import export_user_related_database_as_xlsx
+from .utils import export_user_related_database_as_xlsx, create_and_assign_thread
 
 @login_required
 def create_profile(request):
@@ -67,6 +67,7 @@ def start_matching(request):
         'button_label': _('Proceed'),
         'alert_message': _('Please remember to make a backup of the database! (before clicking OK button)'),
         'redirect_url': 'matching',
+        'header': _('Hello admin!'),
     }
     return render(request, 'flexible_site.html', context=context)
     
@@ -77,6 +78,7 @@ def matching(request):
         'button_label': _('Go to result'),
         'alert_message': 'None',
         'redirect_url': 'match_result',
+        'header': _('Hello admin!'),
     }
     make_matches()
     return render(request, 'flexible_site.html', context=context)
@@ -94,6 +96,11 @@ def match_result(request):
         'without_profile_count': len(without_profile)
     }
     return render(request, 'match_result.html', context=context)
+
+def assign_threads(request):
+    create_and_assign_thread()
+    messages.info(request, _('Threads have been created and assigned.'))
+    return redirect('match_result')
 
 @login_required
 @permission_required('match.download_database', raise_exception=True)
